@@ -2,7 +2,11 @@ var apiTimeOut = 20000;
 var count = 0;
 var datacount = 0;
 var sha1Key = 8345627;
-var registrationId = 123;
+var registrationId;
+
+function setRegistrationId(regId){
+    registrationId = regId;
+}
 
 function requestLogin(username, password){
 
