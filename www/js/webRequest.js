@@ -44,9 +44,7 @@ function postLogin(token, username, password){
       data:"loginId=" + username + "&password="+password+"&registrationId="+ registrationId + "&checksum=" + hashedStr,
       timeout: apiTimeOut,    
       success: function(data, status, xhr) {
-          var uid=data.USER_ID;
-          postNotification(uid,data);
-           
+          storeProfile(data);
       },
       error:function (xhr, ajaxOptions, thrownError){
           if(xhr.status==0)
@@ -67,7 +65,7 @@ function postLogin(token, username, password){
     }
 }
 
-function postNotification(accessId,userdata){
+function postNotification(accessId){
     
     var requestUrl="http://192.168.1.19/notification_api/api/notification/PostNotification";
     var valueStr=accessId+sha1Key;
@@ -85,7 +83,6 @@ function postNotification(accessId,userdata){
       success: function(data, status, xhr) {
           
         storeNotification(data);
-        storeProfile(userdata);
       },
       error:function (xhr, ajaxOptions, thrownError){
           if(xhr.status==0)
@@ -182,7 +179,6 @@ function storeNotification(data){
            
                 
             }
-             loading.endLoading();
                         
         });
 
@@ -190,10 +186,13 @@ function storeNotification(data){
 
 
 function errorNotifyLogin(err){
+    loading.endLoading();
     navigator.notification.alert("Store error", function(){}, "Alert", "Ok");
 }
 
-function successNotifyLogin(){}
+function successNotifyLogin(){
+    loading.endLoading();
+}
 
 function storeProfile(data) {
     
@@ -232,12 +231,10 @@ function storeProfile(data) {
 function errorLogin(err){
 
     navigator.notification.alert("Login failed.", function(){}, "Alert", "Ok");
-    loading.endLoading();
 }
 
 function successLogin(){
-   
-    loading.endLoading();
+
     window.location="notification.html";
 }
 
