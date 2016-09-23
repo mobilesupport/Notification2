@@ -6,13 +6,6 @@ module.exports = [
         "clobbers": [
             "window.plugins.socialsharing"
         ]
-    },
-    {
-        "file": "plugins/cordova-plugin-fcm/www/FCMPlugin.js",
-        "id": "cordova-plugin-fcm.FCMPlugin",
-        "clobbers": [
-            "FCMPlugin"
-        ]
     }
 ];
 module.exports.metadata = 
@@ -20,7 +13,6 @@ module.exports.metadata =
 {
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-plugin-x-socialsharing": "5.1.3",
-    "cordova-plugin-fcm": "1.1.4",
     "cordova-plugin-fcm-config": "1.0.0"
 };
 // BOTTOM OF METADATA

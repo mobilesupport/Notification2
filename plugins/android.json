@@ -13,9 +13,6 @@
         "cordova-plugin-x-socialsharing": {
             "PACKAGE_NAME": "com.pssb.ApeciaNotification"
         },
-        "cordova-plugin-fcm": {
-            "PACKAGE_NAME": "com.pssb.ApeciaNotification"
-        },
         "cordova-plugin-fcm-config": {
             "PACKAGE_NAME": "com.pssb.ApeciaNotification"
         }
