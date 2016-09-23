@@ -52,12 +52,15 @@ var app = {
     },
     
      initPushNotificationRegister: function(){
+         alert("sss");
          FCMPlugin.getToken(
+           
           function(token){
+              
             alert(token);
           },
           function(err){
-            console.log('error retrieving token: ' + err);
+            alert('error retrieving token: ' + err);
           }
         )
     
