@@ -22,7 +22,8 @@ module.exports.metadata =
 {
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-plugin-x-socialsharing": "5.1.3",
-    "cordova-plugin-fcm": "1.1.4"
+    "cordova-plugin-fcm": "1.1.4",
+    "cordova-plugin-fcm-config": "1.0.0"
 }
 // BOTTOM OF METADATA
 });

@@ -57,5 +57,14 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-plugin-fcm-config": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/stetro/cordova-plugin-fcm-config",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }
