@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+       
+       <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
+        
+        <link rel="stylesheet" href="css/login.css">
+        <link rel="stylesheet" href="css/common.css">
+        
+        <title>Login Page</title>
+        
+        <script type="text/javascript" src="js/jquery-mobile/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="js/common.js"></script>
+        <script type="text/javascript" src="js/webRequest.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+       <!-- <script type="text/javascript" src="js/jquery-mobile/jquery.mobile-1.4.5.js"></script>-->
+       
+        <script type="text/javascript">
+            document.addEventListener("deviceready", onDeviceReady, false);
+            
+            function onBackKeyDown(e) {
+                e.preventDefault();
+                navigator.notification.confirm("Are you sure you want to exit?", onExitConfirm, "Confirmation", "Yes,No", false);     
+            }
+            dbmanager.initdb();
+            var userNameInput;
+            var passwordInput;
+
+        </script>
+        
+        
+    </head>
+    <body >
+        <div class="app">
+            <div class="login">
+                
+                <img src="img/pssb_logo.png" alt="Company logo" style="width:300px;height:95px;display:block;margin: 0 auto; ">
+                
+            <p>
+                <img src="img/user_logo.png" alt="User logo" style="width:42px;height:42px; margin-right:5px">
+                <input type="text" id="username" placeholder="Usyyername" maxlength="20"  autofocus required/></p>
+            <p>
+                <img src="img/password_logo.png" alt="User logo" style="width:42px;height:42px; margin-right:5px">
+                <input type="password" id="password" placeholder="Password" maxlength="21" required/>
+            </p>
+            <p class="submit">     
+                <input type="image" name="submit" src="img/submit.png" border="0" alt="Submit" onclick="login();" style="width:42px;height:42px; float:right"
+                 />            
+            </p>
+
+                
+            </div>
+        </div>
+
+    </body>
+    
+      <script>
+          app.initialize();
+        //$.mobile.loading().hide();
+
+    </script>
+</html>

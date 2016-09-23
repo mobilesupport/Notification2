@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+      <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
+
+    <link rel="stylesheet" href="css/notification.css">
+    <link rel="stylesheet" href="css/common.css">
+    
+     <title>Notification Detail</title>
+    <script type="text/javascript">
+    $(document).bind('mobileinit',function(){
+ 
+        $.mobile.loading().hide();
+    })
+</script>  
+     <script type="text/javascript" src="js/jquery-mobile/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="js/common.js"></script>
+        <script type="text/javascript" src="js/detail.js"></script>
+        <script type="text/javascript" src="js/sharing.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+ <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+    
+    <script type="text/javascript">
+        
+        var idString,num=0,currentnum,totalpage;
+        
+        document.addEventListener("deviceready", onDeviceReady, false);
+        
+        function onBackKeyDown(e) {
+            e.preventDefault();
+            window.history.back();
+        }
+        dbmanager.initdb();
+        displayDetail(num);   
+        
+        $(function () {
+           
+             $( "#previous" ).click(function() {
+                 
+                 if(num > 0)
+                  {
+                      num = num-1;
+                      displayDetail(num);   
+                  }
+            });
+
+             $( "#next" ).click(function() {  
+                 if(num < totalpage)
+                  {
+                      num = num+1;
+                      displayDetail(num);   
+                  }
+            });
+
+             $( "#delete" ).click(function() {
+
+            });
+
+            $( "#share" ).click(function() {
+                sharetoSocial();
+            });
+
+        });
+        
+    </script>
+    
+</head>
+
+<body class="pagedetail">
+    
+    <div class="app">
+        
+        <div class="menuheader">
+
+        <div class="headerside"> 
+            <a href="notification.html">
+				<button class="headerbtn" style="width: 50px"><img class="backbutton" src="img/back.png"></button>
+			</a>
+ </div>
+        <div class="title">Notification</div>
+		<div class="headerside">  </div>
+         
+    </div>
+        
+    <div class="container">
+        
+        <div class="wrapper" >
+            
+            <div class="detail">
+
+                <div class="detailrow">
+                    <div class="firstcol" id="datentime"><span id="nametxt">Date/Time </span><span id="colon">:</span></div>
+                    <div class="scdcol" id="dt_detail"> </div>
+                </div>
+
+                <div class="detailrow">
+                    <div class="firstcol" id="ip"><span id="nametxt">IP</span><span id="colon">:</span></div>
+                    <div class="scdcol" id="ip_detail"> </div>
+                </div>
+                
+                 <div class="detailrow">
+                     <div class="firstcol" id="sysname"><span id="nametxt">System Name</span><span id="colon">:</span></div>
+                    <div class="scdcol" id="sys_detail"> </div>
+                </div>
+                
+                 <div class="detailrow">
+                     <div class="firstcol" id="syscon"><span id="nametxt">System Contact</span><span id="colon">:</span></div>
+                    <div class="scdcol" id="syscon_detail"> </div>
+                </div>
+                
+                 <div class="detailrow">
+                     <div class="firstcol" id="syslc"><span id="nametxt">System Location</span><span id="colon">:</span></div>
+                    <div class="scdcol" id="syslc_detail"> </div>
+                </div>
+                
+                 <div class="detailrow">
+                     <div class="firstcol" id="status"><span id="nametxt">Status</span>
+                         <span id="colon">:</span></div>
+                    <div class="scdcol" id="sts_detail"> </div>
+                </div>
+                
+				<div style="width: 100%; height: 60px"> </div>
+
+           </div>
+            
+        </div>
+
+    </div>
+        
+        <div class="menufooter"> 
+            <div class="footerbar"> 
+                
+                <div class="footerbtn">
+                     <button class="buttonbg" id="previous" style="display:none"><img class="menubutton" src="img/previous.png"></button>
+                </div>
+                 <div class="footerbtn">
+                     <button class="buttonbg" id="delete"><img class="menubutton" src="img/trash.png"></button>
+                </div>
+                
+                 <div class="footerbtn">
+                     <button class="buttonbg" id="share"><img class="menubutton" src="img/share.png"></button>
+                </div>
+                 <div class="footerbtn">
+                     <button class="buttonbg" id="next" style="display:none"><img class="menubutton" src="img/next.png"></button>
+                </div>
+
+            </div> 
+        </div>
+        
+    </div>      
+
+</body>
+    <script>
+        $.mobile.loading().hide();
+    </script>
+
+</html>
