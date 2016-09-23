@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1015172086073",
+    "firebase_url": "https://apecianotification.firebaseio.com",
+    "project_id": "apecianotification",
+    "storage_bucket": "apecianotification.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015172086073:android:5777253b5ddc3143",
+        "android_client_info": {
+          "package_name": "com.pssb.ApeciaNotification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015172086073-mt95bbng2lqderr76mh0tbda3lmi90ho.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pssb.ApeciaNotification",
+            "certificate_hash": "8676BB283517FAE52D09174BC7CEA92012E8AA17"
+          }
+        },
+        {
+          "client_id": "1015172086073-m5bnpg5a28qf6cckpk11mmad5q1a45ck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8_jUZ1B-uxZba7jEGhl7VK9666taaRRQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015172086073-m5bnpg5a28qf6cckpk11mmad5q1a45ck.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
