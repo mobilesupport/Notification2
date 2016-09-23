@@ -44,9 +44,9 @@ function postLogin(token, username, password){
       data:"loginId=" + username + "&password="+password+"&registrationId="+ registrationId + "&checksum=" + hashedStr,
       timeout: apiTimeOut,    
       success: function(data, status, xhr) {
-               var uid=data.USER_ID;
-             postNotification(uid);
-          
+          var uid=data.USER_ID;
+          postNotification(uid,data);
+           
       },
       error:function (xhr, ajaxOptions, thrownError){
           if(xhr.status==0)
@@ -67,7 +67,7 @@ function postLogin(token, username, password){
     }
 }
 
-function postNotification(accessId){
+function postNotification(accessId,userdata){
     
     var requestUrl="http://192.168.1.19/notification_api/api/notification/PostNotification";
     var valueStr=accessId+sha1Key;
@@ -84,18 +84,8 @@ function postNotification(accessId){
       timeout: apiTimeOut,    
       success: function(data, status, xhr) {
           
-           var uid=data.USER_ID;
-        var name=data.USER_NAME;
-        var email=data.USER_EMAIL;
-        var phoneno=data.USER_PHONE;  
-        var date=data.DATE_CREATED;
-        var staffno=data.STAFF_NO;
-        var udesignation= data.USER_DESIGNATION;
-        var ulogin=data.USER_LOGIN;
-        var ustatus=data.USER_STATUS; 
-          
         storeNotification(data);
-          storeProfile(uid, name, email, phoneno, date, staffno,udesignation,ulogin,ustatus);
+        storeProfile(userdata);
       },
       error:function (xhr, ajaxOptions, thrownError){
           if(xhr.status==0)
@@ -205,28 +195,36 @@ function errorNotifyLogin(err){
 
 function successNotifyLogin(){}
 
-function storeProfile(uid, name, email, phoneno, date, staffno,udesignation,ulogin,ustatus) {
+function storeProfile(data) {
     
-    var profile = {
-    values1 : [uid, name, email, phoneno, date, staffno,udesignation,ulogin,ustatus]
-    };
-    
-    insertProfile(profile);
-    
-    function insertProfile(profile) {
+        var uid=data.USER_ID;
+        var name=data.USER_NAME;
+        var email=data.USER_EMAIL;
+        var phoneno=data.USER_PHONE;  
+        var date=data.DATE_CREATED;
+        var staffno=data.STAFF_NO;
+        var udesignation= data.USER_DESIGNATION;
+        var ulogin=data.USER_LOGIN;
+        var ustatus=data.USER_STATUS; 
+
         db.transaction(function(tx) {
             tx.executeSql('DROP TABLE IF EXISTS userprofile');
         
             tx.executeSql('CREATE TABLE IF NOT EXISTS userprofile (uid text, name text, email text, phoneno text, date text, staffno text, udesignation text, ulogin text, ustatus text)');
 //            tx.executeSql('DELETE FROM userprofile');
-            tx.executeSql(
-                'INSERT INTO userprofile (uid, name, email, phoneno, date, staffno,udesignation,ulogin,ustatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', 
-                profile.values1,
-                successLogin,
-                errorLogin
-            );
+
+                var profile = {
+                values1 : [uid, name, email, phoneno, date, staffno,udesignation,ulogin,ustatus]
+                };
+
+                tx.executeSql(
+                    'INSERT INTO userprofile (uid, name, email, phoneno, date, staffno,udesignation,ulogin,ustatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', 
+                    profile.values1,
+                    successLogin,
+                    errorLogin
+                );
+            
         });
-    }
     
 }
 

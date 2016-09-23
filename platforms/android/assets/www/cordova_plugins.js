@@ -8,10 +8,10 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/Cordova-Plugin-FCMNotification/www/FCMNotificationPlugin.js",
-        "id": "Cordova-Plugin-FCMNotification.CDVPushyMe",
+        "file": "plugins/cordova-plugin-fcm/www/FCMPlugin.js",
+        "id": "cordova-plugin-fcm.FCMPlugin",
         "clobbers": [
-            "navigator.FCMNotification"
+            "FCMPlugin"
         ]
     }
 ];
@@ -20,7 +20,7 @@ module.exports.metadata =
 {
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-plugin-x-socialsharing": "5.1.3",
-    "Cordova-Plugin-FCMNotification": "1.0.0-dev"
+    "cordova-plugin-fcm": "1.1.4"
 };
 // BOTTOM OF METADATA
 });
