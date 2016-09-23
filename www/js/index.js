@@ -54,7 +54,7 @@ var app = {
      initPushNotificationRegister: function(){
          alert("sss");
          FCMPlugin.getToken(
-             alert("ccc");
+           
           function(token){
               
             alert(token);
