@@ -33,7 +33,7 @@
 		B6DC8671A79E4682AE958F07 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E05CA5E34A6D4E07AC012D3E /* AddressBook.framework */; };
 		1B2530B4854648E78B118AD6 /* libsqlite3.0.tbd in Resources */ = {isa = PBXBuildFile; fileRef = 98A27696FCB24283B25B073C /* libsqlite3.0.tbd */; };
 		CA0CF695C49642C8BE0D0D93 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6B3DE7DE9BC4EEEA66FD772 /* Security.framework */; };
-		34FEF92A9DF14B3E89CA4652 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 779EE2B2ED624B109D5564BA /* GoogleService-Info.plist */; };
+		AF4B6FF2E7E14B90BCB5D33F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B444A2944BD462195570D95 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +96,7 @@
 		E05CA5E34A6D4E07AC012D3E /* AddressBook.framework */ = {isa = PBXFileReference; name = "AddressBook.framework"; path = "System/Library/Frameworks/AddressBook.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		98A27696FCB24283B25B073C /* libsqlite3.0.tbd */ = {isa = PBXFileReference; name = "libsqlite3.0.tbd"; path = "libsqlite3.0.tbd"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		F6B3DE7DE9BC4EEEA66FD772 /* Security.framework */ = {isa = PBXFileReference; name = "Security.framework"; path = "System/Library/Frameworks/Security.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		779EE2B2ED624B109D5564BA /* GoogleService-Info.plist */ = {isa = PBXFileReference; name = "GoogleService-Info.plist"; path = "cordova-plugin-fcm-config/GoogleService-Info.plist"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.plist.xml; explicitFileType = undefined; includeInIndex = 0; };
+		9B444A2944BD462195570D95 /* GoogleService-Info.plist */ = {isa = PBXFileReference; name = "GoogleService-Info.plist"; path = "cordova-plugin-fcm-config/GoogleService-Info.plist"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.plist.xml; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,7 +236,7 @@
 				30C18A7D5E3E4A5993788B1A /* FCMPlugin.h */,
 				634065F656B94F3C8B2F0B89 /* AppDelegate+FCMPlugin.h */,
 				6BC293739BE14E108F9BAEED /* Firebase.h */,
-				779EE2B2ED624B109D5564BA /* GoogleService-Info.plist */,
+				9B444A2944BD462195570D95 /* GoogleService-Info.plist */,
 			);
 			name = Plugins;
 			path = "Apecia Notification/Plugins";
@@ -355,7 +355,7 @@
 				5915E14084A6486EA7592BCC /* SocialSharing.m in Sources */,
 				47D95338FE564A0F9A1B0E09 /* FCMPlugin.m in Sources */,
 				442D9651C23D4A479D26F4A1 /* AppDelegate+FCMPlugin.m in Sources */,
-				34FEF92A9DF14B3E89CA4652 /* GoogleService-Info.plist in Resources */,
+				AF4B6FF2E7E14B90BCB5D33F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
