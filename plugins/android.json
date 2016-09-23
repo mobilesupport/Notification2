@@ -15,6 +15,10 @@
         },
         "cordova-plugin-fcm-config": {
             "PACKAGE_NAME": "com.pssb.ApeciaNotification"
+        },
+        "phonegap-plugin-push": {
+            "SENDER_ID": "1015172086073",
+            "PACKAGE_NAME": "com.pssb.ApeciaNotification"
         }
     },
     "dependent_plugins": {}

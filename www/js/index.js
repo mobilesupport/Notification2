@@ -53,35 +53,29 @@ var app = {
     
      initPushNotificationRegister: function(){
    
-         FCMPlugin.getToken(
-           
-          function(token){
-              
-            alert(token);
-          },
-          function(err){
-            alert('error retrieving token: ' + err);
-          }
-        )
-    
-//           navigator.FCMNotification.fcmTokenID(function(tokenID){
-//               
-//               alert("uuu");
-//        // retrun token id for notification service
-//        alert("Token ID = " + tokenID);
-//        //Token ID use for call notification form FCM server.
-//     }, function(error){
-//        alert(error);
-//     });
-//        var pushNotification = window.plugins.pushNotification;
-//        
-//        
-//        if ( device.platform == 'android' || device.platform == 'Android'){
-//            pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"227139393233","ecb":"app.onNotificationGCM"});
-//        } 
-//        else {
-//            pushNotification.register(app.tokenHandler,app.errorHandler,{"badge":"true","sound":"true","alert":"true","ecb":"app.onNotificationAPN"});
-//        }
+         var push = PushNotification.init({
+            "android": {
+                "senderID": "1015172086073",
+                "icon": "phonegap",
+                "iconColor": "blue"
+            },
+            browser: {
+                pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+            },
+            "ios": {
+                "alert": "true",
+                "badge": "true",
+                "sound": "true"
+            },
+            "windows": {}
+        });
+         
+         PushNotification.hasPermission(function(data) {
+             alert('x');
+        if (data.isEnabled) {
+            alert('isEnabled');
+        }
+    });
 
     },
     

@@ -117,6 +117,18 @@ function login(){
 };
 
 function notifyshow(){
+    
+       dbmanager.getUserProfileData(function(returnData){
+
+             if(returnData.rows.length>0){
+                 var accessId = returnData.rows.item(0).uid;
+                 postNotification(accessId);
+    
+                }   
+            else{
+                alert("Data retrieved failed");
+            }
+        });    
 
     dbmanager.getNotifyListData(function(returnData){
 
