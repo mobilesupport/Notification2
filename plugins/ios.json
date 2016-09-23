@@ -7,9 +7,6 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-pushplugin": {
-            "PACKAGE_NAME": "com.pssb.ApeciaNotification"
-        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.pssb.ApeciaNotification"
         },
@@ -17,12 +14,5 @@
             "PACKAGE_NAME": "com.pssb.ApeciaNotification"
         }
     },
-    "dependent_plugins": {
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.pssb.ApeciaNotification"
-        },
-        "cordova-plugin-globalization": {
-            "PACKAGE_NAME": "com.pssb.ApeciaNotification"
-        }
-    }
+    "dependent_plugins": {}
 }

@@ -15,10 +15,6 @@
 		3047A5121AB8059700498E2A /* build-debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3047A50F1AB8059700498E2A /* build-debug.xcconfig */; };
 		3047A5131AB8059700498E2A /* build-release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3047A5101AB8059700498E2A /* build-release.xcconfig */; };
 		3047A5141AB8059700498E2A /* build.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3047A5111AB8059700498E2A /* build.xcconfig */; };
-		BB0C1FB5B9E14592869579DE /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 3062E5E5224F4937B61DC606 /* CDVDevice.m */; };
-		F3E74D7525B245BDA352A527 /* CDVGlobalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB2B7FE021D4DA7A34C63A0 /* CDVGlobalization.m */; };
-		85FC97BBFD924BAC8F132CF5 /* AppDelegate+notification.m in Sources */ = {isa = PBXBuildFile; fileRef = F66A6144675F4325850BC093 /* AppDelegate+notification.m */; };
-		89759E8A668F4314A132A2F3 /* PushPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = F6DCA208C9AA4D10935DA0CA /* PushPlugin.m */; };
 		E7EFC64E684E4AF1AC5AA882 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F833874D1FB49B5BFF9C6FA /* NSString+URLEncoding.m */; };
 		5915E14084A6486EA7592BCC /* SocialSharing.m in Sources */ = {isa = PBXBuildFile; fileRef = 013E4D46177A4A85B55F5E31 /* SocialSharing.m */; };
 		E5B5769676C0469C80ED9CFD /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C04F8996834C79A98B5779 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -62,14 +58,6 @@
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "Apecia Notification/config.xml"; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		3062E5E5224F4937B61DC606 /* CDVDevice.m */ = {isa = PBXFileReference; name = "CDVDevice.m"; path = "cordova-plugin-device/CDVDevice.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		ED0096E8218D45109B3F28BD /* CDVDevice.h */ = {isa = PBXFileReference; name = "CDVDevice.h"; path = "cordova-plugin-device/CDVDevice.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		9EB2B7FE021D4DA7A34C63A0 /* CDVGlobalization.m */ = {isa = PBXFileReference; name = "CDVGlobalization.m"; path = "cordova-plugin-globalization/CDVGlobalization.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		7AFBEBE782284C9780F1989F /* CDVGlobalization.h */ = {isa = PBXFileReference; name = "CDVGlobalization.h"; path = "cordova-plugin-globalization/CDVGlobalization.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		F66A6144675F4325850BC093 /* AppDelegate+notification.m */ = {isa = PBXFileReference; name = "AppDelegate+notification.m"; path = "cordova-plugin-pushplugin/AppDelegate+notification.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		F6DCA208C9AA4D10935DA0CA /* PushPlugin.m */ = {isa = PBXFileReference; name = "PushPlugin.m"; path = "cordova-plugin-pushplugin/PushPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		3646D75B066A42758C54D4CC /* AppDelegate+notification.h */ = {isa = PBXFileReference; name = "AppDelegate+notification.h"; path = "cordova-plugin-pushplugin/AppDelegate+notification.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		0F64840672D64E54B3E784D1 /* PushPlugin.h */ = {isa = PBXFileReference; name = "PushPlugin.h"; path = "cordova-plugin-pushplugin/PushPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		3F833874D1FB49B5BFF9C6FA /* NSString+URLEncoding.m */ = {isa = PBXFileReference; name = "NSString+URLEncoding.m"; path = "cordova-plugin-x-socialsharing/NSString+URLEncoding.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		013E4D46177A4A85B55F5E31 /* SocialSharing.m */ = {isa = PBXFileReference; name = "SocialSharing.m"; path = "cordova-plugin-x-socialsharing/SocialSharing.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		00FE8D956EBD43539102F162 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; name = "NSString+URLEncoding.h"; path = "cordova-plugin-x-socialsharing/NSString+URLEncoding.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
@@ -182,14 +170,6 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				3062E5E5224F4937B61DC606 /* CDVDevice.m */,
-				ED0096E8218D45109B3F28BD /* CDVDevice.h */,
-				9EB2B7FE021D4DA7A34C63A0 /* CDVGlobalization.m */,
-				7AFBEBE782284C9780F1989F /* CDVGlobalization.h */,
-				F66A6144675F4325850BC093 /* AppDelegate+notification.m */,
-				F6DCA208C9AA4D10935DA0CA /* PushPlugin.m */,
-				3646D75B066A42758C54D4CC /* AppDelegate+notification.h */,
-				0F64840672D64E54B3E784D1 /* PushPlugin.h */,
 				3F833874D1FB49B5BFF9C6FA /* NSString+URLEncoding.m */,
 				013E4D46177A4A85B55F5E31 /* SocialSharing.m */,
 				00FE8D956EBD43539102F162 /* NSString+URLEncoding.h */,
@@ -308,10 +288,6 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
-				BB0C1FB5B9E14592869579DE /* CDVDevice.m in Sources */,
-				F3E74D7525B245BDA352A527 /* CDVGlobalization.m in Sources */,
-				85FC97BBFD924BAC8F132CF5 /* AppDelegate+notification.m in Sources */,
-				89759E8A668F4314A132A2F3 /* PushPlugin.m in Sources */,
 				E7EFC64E684E4AF1AC5AA882 /* NSString+URLEncoding.m in Sources */,
 				5915E14084A6486EA7592BCC /* SocialSharing.m in Sources */,
 			);

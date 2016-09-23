@@ -44,19 +44,8 @@ function postLogin(token, username, password){
       data:"loginId=" + username + "&password="+password+"&registrationId="+ registrationId + "&checksum=" + hashedStr,
       timeout: apiTimeOut,    
       success: function(data, status, xhr) {
-    
-        var uid=data.USER_ID;
-        var name=data.USER_NAME;
-        var email=data.USER_EMAIL;
-        var phoneno=data.USER_PHONE;  
-        var date=data.DATE_CREATED;
-        var staffno=data.STAFF_NO;
-        var udesignation= data.USER_DESIGNATION;
-        var ulogin=data.USER_LOGIN;
-        var ustatus=data.USER_STATUS; 
-
-           storeProfile(uid, name, email, phoneno, date, staffno,udesignation,ulogin,ustatus);
-           postNotification(uid); 
+               var uid=data.USER_ID;
+             postNotification(uid);
           
       },
       error:function (xhr, ajaxOptions, thrownError){
@@ -95,7 +84,18 @@ function postNotification(accessId){
       timeout: apiTimeOut,    
       success: function(data, status, xhr) {
           
+           var uid=data.USER_ID;
+        var name=data.USER_NAME;
+        var email=data.USER_EMAIL;
+        var phoneno=data.USER_PHONE;  
+        var date=data.DATE_CREATED;
+        var staffno=data.STAFF_NO;
+        var udesignation= data.USER_DESIGNATION;
+        var ulogin=data.USER_LOGIN;
+        var ustatus=data.USER_STATUS; 
+          
         storeNotification(data);
+          storeProfile(uid, name, email, phoneno, date, staffno,udesignation,ulogin,ustatus);
       },
       error:function (xhr, ajaxOptions, thrownError){
           if(xhr.status==0)
@@ -155,10 +155,7 @@ function postLogout(accessId)
 }
 
 function storeNotification(data){
-
-        insertProfile();
-        function insertProfile() {
-       
+      
         db.transaction(function(tx) {
             
             tx.executeSql('DROP TABLE IF EXISTS notifylist');
@@ -168,9 +165,10 @@ function storeNotification(data){
 //            tx.executeSql('DELETE FROM notifylist');
                        
             var len = data.length;
-          
+            
             for(var i=0; i<len; i++)
             {
+                
                 var issueID=data[i].ISSUE_ID;
                 var issueDate=data[i].ISSUE_DATE;
                 var sysName=data[i].SYSTEM_NAME;
@@ -184,17 +182,28 @@ function storeNotification(data){
                 var notificationData = {
                 values1 : [issueID, issueDate, sysName, sysContact, sysLoc, issueSts,notified,readSts,ipAdd]
                 };
-
+              
                 tx.executeSql(
-                    'INSERT INTO notifylist (issueID, issueDate, sysName, sysContact, sysLoc, issueSts,notified,readSts,ipAdd) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',notificationData.values1,successNotifyLogin,errorNotifyLogin);
+                    'INSERT INTO notifylist (issueID, issueDate, sysName, sysContact, sysLoc, issueSts,notified,readSts,ipAdd) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                    notificationData.values1,
+                    successNotifyLogin,
+                    errorNotifyLogin
+                );
+           
+                
             }
-                        loading.endLoading();
-        
+             loading.endLoading();
+                        
         });
 
-        }
-
 }
+
+
+function errorNotifyLogin(err){
+    navigator.notification.alert("Store error", function(){}, "Alert", "Ok");
+}
+
+function successNotifyLogin(){}
 
 function storeProfile(uid, name, email, phoneno, date, staffno,udesignation,ulogin,ustatus) {
     
@@ -218,13 +227,9 @@ function storeProfile(uid, name, email, phoneno, date, staffno,udesignation,ulog
             );
         });
     }
+    
 }
 
-function errorNotifyLogin(err){
-    navigator.notification.alert("Store error", function(){}, "Alert", "Ok");
-}
-
-function successNotifyLogin(){}
 
 function errorLogin(err){
 
@@ -233,7 +238,7 @@ function errorLogin(err){
 }
 
 function successLogin(){
-
+   
     loading.endLoading();
     window.location="notification.html";
 }
