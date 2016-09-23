@@ -12,6 +12,9 @@
         },
         "cordova-plugin-x-socialsharing": {
             "PACKAGE_NAME": "com.pssb.ApeciaNotification"
+        },
+        "Cordova-Plugin-FCMNotification": {
+            "PACKAGE_NAME": "com.pssb.ApeciaNotification"
         }
     },
     "dependent_plugins": {}
