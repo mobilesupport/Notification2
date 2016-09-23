@@ -57,7 +57,7 @@ var app = {
             alert(token);
           },
           function(err){
-            console.log('error retrieving token: ' + err);
+            alert('error retrieving token: ' + err);
           }
         )
     
