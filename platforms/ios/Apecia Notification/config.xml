@@ -95,7 +95,7 @@
     <preference name="permissions" value="none" />
     <preference name="target-device" value="universal" />
     <preference name="orientation" value="portrait" />
-    <preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" />
+    <preference name="android-windowSoftInputMode" value="adjustResize|stateHidden" />
     <preference name="fullscreen" value="false" />
     <preference name="webviewbounce" value="true" />
     <preference name="prerendered-icon" value="true" />

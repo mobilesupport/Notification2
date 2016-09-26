@@ -20,6 +20,7 @@
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="14" />
     <preference name="android-installLocation" value="auto" />
+    <preference name="android-windowSoftInputMode" value="adjustResize|stateHidden" />
     <gap:plugin name="org.apache.cordova.battery-status" />
     <gap:plugin name="org.apache.cordova.camera" />
     <gap:plugin name="org.apache.cordova.media-capture" />
@@ -74,7 +75,6 @@
     <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
-        <preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
