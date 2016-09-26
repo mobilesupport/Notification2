@@ -57,7 +57,8 @@
             });
 
              $( "#delete" ).click(function() {
-                    postDelete(idString);
+                 
+                  navigator.notification.confirm("Are you sure to delete this record?", onDeleteConfirm, "Confirmation", "Yes,No", false);     
             });
 
             $( "#share" ).click(function() {

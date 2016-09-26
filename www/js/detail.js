@@ -78,3 +78,13 @@ function pageMovement(passNum)
     }
                    
 }
+
+function onDeleteConfirm(button) {
+    if(button==2){
+        return; //To do nothing when click "No" button
+    }else if(button==1){
+        postDelete(idString); //Delete the msg
+    }else{
+        //To do nothing but dimiss the dialog when user clicks on the screen rather than yes-no button
+    }
+}
