@@ -94,7 +94,6 @@ function login(){
 };
 
 function appendDetail(num){
-    currentnum = num;
             
      dbmanager.getNotifyListData(function(returnData){
 
