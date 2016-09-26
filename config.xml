@@ -7,7 +7,7 @@
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
-    <preference name="fullscreen" value="true" />
+    <preference name="fullscreen" value="false" />
     <preference name="webviewbounce" value="true" />
     <preference name="prerendered-icon" value="true" />
     <preference name="stay-in-webview" value="false" />
@@ -73,10 +73,14 @@
     <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
+        <preference name="Fullscreen" value="true" />
+        <preference name="orientation" value="default" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <preference name="Fullscreen" value="true" />
+        <preference name="orientation" value="default" />
     </platform>
 <plugin name="phonegap-plugin-push" spec="1.6.0">
     <param name="SENDER_ID" value="1015172086073" />
