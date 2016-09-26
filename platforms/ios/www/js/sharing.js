@@ -26,7 +26,7 @@ var sharing={
 
     
     whatsappShare:function(){
-        var len,count,msg;
+        var len,count,msg,text,issDate,sysName,issSts;
         
            dbmanager.getNotifyListData(function(returnData){
                 
@@ -43,10 +43,12 @@ var sharing={
                               }
                         }
                  
-                 
-                 msg=returnData.rows.item(count).issueSts;
-                 
-                 window.plugins.socialsharing.shareViaWhatsApp(msg, null, null, function() {}, function(errormsg){alert(errormsg)});
+                 issDate=returnData.rows.item(count).issueDate;
+                 sysName=returnData.rows.item(count).sysName;
+                 issSts=returnData.rows.item(count).issueSts;
+                 text = "Issue Date: "+issDate +"\n\n"+"System Name: "+sysName+"\n\n"+"Issue Status: "+issSts;
+//                 msg = msg.html(text);
+                 window.plugins.socialsharing.shareViaWhatsApp(text, null, null, function() {}, function(errormsg){alert(errormsg)});
              
              }   
             else{
