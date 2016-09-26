@@ -40,41 +40,6 @@
        
         <script type="text/javascript">
             
-//            (function($) {
-//            $.fn.enterAsTab = function(options) {
-//                var settings = $.extend({
-//                    'allowSubmit': false
-//                }, options);
-//                $(this).find('input, select, textarea, button').live("keydown", {localSettings: settings}, function(event) {
-//                    if (settings.allowSubmit) {
-//                        var type = $(this).attr("type");
-//                        if (type == "submit") {
-//                            return true;
-//                        }
-//                    }
-//                    if (event.keyCode == 13) {
-//                        var inputs = $(this).parents("form").eq(0).find(":input:visible:not(:disabled):not([readonly])");
-//                        var idx = inputs.index(this);
-//                        if (idx == inputs.length - 1) {
-//                            idx = -1;
-//                        } else {
-//                            inputs[idx + 1].focus(); // handles submit buttons
-//                        }
-//                        try {
-//                            inputs[idx + 1].select();
-//                        }
-//                        catch (err) {
-//                            // handle objects not offering select
-//                        }
-//                        return false;
-//                    }
-//                });
-//                return this;
-//            };
-//        })(jQuery);
-
-//        $("#username").enterAsTab({ 'allowSubmit': true});
-            
             document.addEventListener("deviceready", onDeviceReady, false);
             
             function onBackKeyDown(e) {
@@ -82,6 +47,24 @@
                 navigator.notification.confirm("Are you sure you want to exit?", onExitConfirm, "Confirmation", "Yes,No", false);     
             }
             dbmanager.initdb();
+            
+                 $(function () {
+                
+                 $("#username").keypress(function(e) {
+                    var code = (e.keyCode ? e.keyCode : e.which);
+                    if ( (code==13) || (code==10))
+                        {
+                            alert("xx");
+                            $("#username").blur();
+                            $("#password").blur();
+                           
+                        }
+                });
+                
+        });
+                
+              });
+            
             var userNameInput;
             var passwordInput;
 
