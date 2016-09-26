@@ -2,6 +2,7 @@ var apiTimeOut = 20000;
 var sha1Key = 8345627;
 var registrationId;
 
+//To set registration id for global variable use 
 function setRegistrationId(regId){
     registrationId = regId;
 }
@@ -17,8 +18,7 @@ function requestLogin(username, password){
       timeout: apiTimeOut,  
       success: function(data, status, xhr) {
         
-          var sessionToken=JSON.stringify(data);
-        postLogin(sessionToken, username, password);
+        postLogin(username, password);
       },
          
       error:function (xhr, ajaxOptions, thrownError){
@@ -30,7 +30,7 @@ function requestLogin(username, password){
     
 }
 
-function postLogin(token, username, password){
+function postLogin(username, password){
     
     var requestUrl="http://192.168.1.19/notification_api/api/user/login";
     var valueStr=username+password+registrationId+sha1Key;
@@ -46,6 +46,7 @@ function postLogin(token, username, password){
       data:"loginId=" + username + "&password="+password+"&registrationId="+ registrationId + "&checksum=" + hashedStr,
       timeout: apiTimeOut,    
       success: function(data, status, xhr) {
+          //Store user profile data in local storage for later retrieve purpose
           storeProfile(data);
       },
       error:function (xhr, ajaxOptions, thrownError){
@@ -83,10 +84,31 @@ function postNotification(accessId){
       data:"accessId=" + accessId + "&checksum=" + hashedStr,
       timeout: apiTimeOut,    
       success: function(data, status, xhr) {
-          
+ 
+        //Login successfully
+        //Store notification message data in local storage for later retrieve purpose
+
         storeNotification(data);
+          
+          dbmanager.getNotifyListData(function(returnData){
+        
+             if(returnData.rows.length>0){
+                 var count = returnData.rows.length;
+                    var contained_divs = '';
+                  
+                for(var i=0;i<count;i++)
+                {
+                   
+                    contained_divs += '<div class="notifyview" id="'+returnData.rows.item(i).issueID +'"><label id="headline">'+ returnData.rows.item(i).issueDate +'</label> <label id="headline">'+ returnData.rows.item(i).sysName +' </label><label id="notifymsg">'+ returnData.rows.item(i).issueSts +' </label></div>';
+
+                }
+                $('#notifybox').append(contained_divs);
+
+            }   
+  });    
       },
       error:function (xhr, ajaxOptions, thrownError){
+           //Login unsuccessfully
           if(xhr.status==0)
             {}
           else
@@ -120,17 +142,58 @@ function postLogout(accessId)
           data:"accessId=" + accessId + "&checksum=" + hashedStr,
           timeout: apiTimeOut,    
           success: function(data, status, xhr) {
-              
+              //Log out successfully
               var newJsonObj=$.parseJSON(xhr.responseText);
               
               navigator.notification.alert(newJsonObj.Message, function(){}, "Alert", "Ok");
                 window.location.href = "index.html";
           },
           error:function (xhr, ajaxOptions, thrownError){
+              //Log out unsuccessfully
               if(xhr.status==0)
                 {}
               else
                 navigator.notification.alert("Log out unsucessfully", function(){}, "Alert", "Ok");
+
+              loading.endLoading();
+            }
+        })
+
+        }
+        catch(ex){
+
+            alert(ex.message);
+        }
+}
+
+function postDelete(issueId)
+{
+
+    var requestUrl="http://192.168.1.19/notification_api/api/notification/PostDeleteNotification";
+    var valueStr=issueId+sha1Key;
+    var hashedStr=SHA1(valueStr);
+
+       try{
+            $.ajax({
+          url: requestUrl,
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          data:"issueId=" + issueId + "&checksum=" + hashedStr,
+          timeout: apiTimeOut,    
+          success: function(data, status, xhr) {
+
+              navigator.notification.alert(xhr.responseText, function(){}, "Alert", "Ok");
+                window.location.href = "notification.html";
+            
+          },
+          error:function (xhr, ajaxOptions, thrownError){
+            
+              if(xhr.status==0)
+                {}
+              else
+                navigator.notification.alert(newJsonObj.Message, function(){}, "Alert", "Ok");
 
               loading.endLoading();
             }
@@ -157,7 +220,7 @@ function storeProfile(data) {
 
         db.transaction(function(tx) {
             tx.executeSql('DROP TABLE IF EXISTS userprofile');
-        
+           
             tx.executeSql('CREATE TABLE IF NOT EXISTS userprofile (uid text, name text, email text, phoneno text, date text, staffno text, udesignation text, ulogin text, ustatus text)');
 //            tx.executeSql('DELETE FROM userprofile');
 
@@ -183,7 +246,6 @@ function errorLogin(err){
 }
 
 function successLogin(){
-
     window.location="notification.html";
 }
 
@@ -194,7 +256,7 @@ function storeNotification(data){
             tx.executeSql('DROP TABLE IF EXISTS notifylist');
             
             tx.executeSql('CREATE TABLE IF NOT EXISTS notifylist (issueID text, issueDate text, sysName text, sysContact text, sysLoc text, issueSts text, notified text, readSts text, ipAdd text)');
-                       
+           
             var len = data.length;
             
             for(var i=0; i<len; i++)

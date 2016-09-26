@@ -1,4 +1,4 @@
-function displayDetail(num){
+function displayMsgDetail(pageNum){
   
        if (idString == null) {
            
@@ -18,18 +18,18 @@ function displayDetail(num){
                 if(returnData.rows.length>0){
                     
                     var count = returnData.rows.length;
-                    totalpage = returnData.rows.length-1;
+                    totalPage = returnData.rows.length-1;
 
                     for(var i=0;i<count;i++)
                     {
                       if(returnData.rows.item(i).issueID == idString)
                           {
-                              num = i;
+                              pageNum = i;
                               break;
                           }
                     }
-                    pageMovement(num); 
-                    appendDetail(num);
+                    pageMovement(pageNum); 
+                    appendDetail(pageNum);
                     
                  }   
                 else{
@@ -42,9 +42,9 @@ function displayDetail(num){
             dbmanager.getNotifyListData(function(returnData){
 
                 if(returnData.rows.length>0){
-                    idString = returnData.rows.item(num).issueID;
-                    pageMovement(num); 
-                    appendDetail(num);
+                    idString = returnData.rows.item(pageNum).issueID;
+                    pageMovement(pageNum); 
+                    appendDetail(pageNum);
                  }   
                 else{
                     alert("Data retrieve failed");
@@ -60,18 +60,18 @@ function sharetoSocial(){
         sharing.initShareSheet();
 }
 
-function pageMovement(no)
+function pageMovement(passNum)
 {
-    num = no;
+    pageNum = passNum;
 
-     if(num == 0){
+     if(pageNum == 0){
 
         $( "#previous" ).hide();
     }else{
         $( "#previous" ).show();
     }
 
-    if(num == totalpage){
+    if(pageNum == totalPage){
         $( "#next" ).hide();
     }else{
         $( "#next" ).show();

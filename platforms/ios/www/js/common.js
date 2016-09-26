@@ -4,7 +4,7 @@ var passwordInput;
 
 var loading = {
     
-    //add loading page when calll
+    //add loading page when call
     startLoading:function(){
         $(".app").prepend("<div class='loadingPage'><div class='loadingFrame'><img class='loadingIcon' src='img/loading_large.gif'></img></div></div>");
     },
@@ -55,11 +55,11 @@ var dbmanager = {
 function onDeviceReady() {
 
     document.addEventListener("backbutton", onBackKeyDown, false);
-    networkChecking();
+    networkChecking(); //Check internet availability once device ready
 }
 
 function networkChecking(){
-    
+    //Checking internet availability
   if(navigator.network.connection.type == Connection.NONE){
 
       navigator.notification.alert("No internet connection.", function(){}, "Alert", "Ok");    
@@ -71,11 +71,11 @@ function networkChecking(){
 
 function onExitConfirm(button) {
     if(button==2){
-        return;
+        return; //To do nothing when click "No" button
     }else if(button==1){
-        navigator.app.exitApp();
+        navigator.app.exitApp(); //To exit the app when click "Yes" button
     }else{
-        
+        //To do nothing but dimiss the dialog when user clicks on the screen rather than yes-no button
     }
 }
 
@@ -93,18 +93,20 @@ function login(){
    
 };
 
-function appendDetail(num){
+
+function appendDetail(pageNum){
+    //To show the specfic notification message detail according to specfic notifaction clicked or page navigation 
             
      dbmanager.getNotifyListData(function(returnData){
 
      if(returnData.rows.length>0){
 
-             $('#dt_detail').html(returnData.rows.item(num).issueDate);
-             $('#ip_detail').html(returnData.rows.item(num).ipAdd);
-             $('#sys_detail').html(returnData.rows.item(num).sysName);
-             $('#syscon_detail').html(returnData.rows.item(num).sysContact);
-             $('#syslc_detail').html(returnData.rows.item(num).sysLoc);
-             $('#sts_detail').html(returnData.rows.item(num).issueSts);
+             $('#dt_detail').html(returnData.rows.item(pageNum).issueDate);
+             $('#ip_detail').html(returnData.rows.item(pageNum).ipAdd);
+             $('#sys_detail').html(returnData.rows.item(pageNum).sysName);
+             $('#syscon_detail').html(returnData.rows.item(pageNum).sysContact);
+             $('#syslc_detail').html(returnData.rows.item(pageNum).sysLoc);
+             $('#sts_detail').html(returnData.rows.item(pageNum).issueSts);
         }
     }); 
 }

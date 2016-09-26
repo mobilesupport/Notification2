@@ -42,6 +42,7 @@
             
             document.addEventListener("deviceready", onDeviceReady, false);
             
+            //When keypress on phone backpressed button
             function onBackKeyDown(e) {
                 e.preventDefault();
                 navigator.notification.confirm("Are you sure you want to exit?", onExitConfirm, "Confirmation", "Yes,No", false);     
@@ -50,6 +51,7 @@
             
                  $(function () {
                 
+                //password field gets focused when key press on "Go" at keyboard in username field as tab function
                  $("#username").keypress(function(e) {
                     var code = (e.keyCode ? e.keyCode : e.which);
                     if ( (code==13) || (code==10))
@@ -57,13 +59,14 @@
                             $("#password").focus();  
                         }
                 });
-                     
-                     $("#password").keypress(function(e) {
-                    var code = (e.keyCode ? e.keyCode : e.which);
-                    if ( (code==13) || (code==10))
-                        {
-                            $("#submitlogo").focus();  
-                        }
+                
+                //submit btn gets focused when key press on "Go" at keyboard in password field as tab function
+                 $("#password").keypress(function(e) {
+                var code = (e.keyCode ? e.keyCode : e.which);
+                if ( (code==13) || (code==10))
+                    {
+                        $("#submitlogo").focus();  
+                    }
                 });
                 
         });
