@@ -54,16 +54,12 @@
                     var code = (e.keyCode ? e.keyCode : e.which);
                     if ( (code==13) || (code==10))
                         {
-                            alert("xx");
-                            $("#username").blur();
-                            $("#password").blur();
-                           
+                            $("#password").focus();  
                         }
                 });
                 
         });
                 
-              });
             
             var userNameInput;
             var passwordInput;
