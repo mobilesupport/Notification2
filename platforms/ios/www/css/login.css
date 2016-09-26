@@ -25,10 +25,8 @@ img {
 }
 
 #companylogo{
-    width:300px;
-    height:95px;
     display:block;
-margin: 0 auto;
+    margin: 0 auto;
 }
 
 #loginlogo{
@@ -40,5 +38,5 @@ margin: 0 auto;
 #submitlogo{
     width:42px;
     height:42px; 
-    float:right
+    float:right;
 }

@@ -1,6 +1,4 @@
 var apiTimeOut = 20000;
-var count = 0;
-var datacount = 0;
 var sha1Key = 8345627;
 var registrationId;
 
@@ -25,7 +23,7 @@ function requestLogin(username, password){
          
       error:function (xhr, ajaxOptions, thrownError){
            loading.endLoading();
-           navigator.notification.alert("API connection failed.", function(){}, "Alert", "Ok");
+           navigator.notification.alert("Server down. Please try again later.", function(){}, "Alert", "Ok");
           
         }
     }) 
@@ -65,7 +63,7 @@ function postLogin(token, username, password){
     }
     catch(ex){
         
-        alert(ex.message);
+       navigator.notification.alert("Login failed", function(){}, "Alert", "Ok");
     }
 }
 
@@ -92,7 +90,7 @@ function postNotification(accessId){
           if(xhr.status==0)
             {}
           else
-            navigator.notification.alert("Data retrieved error", function(){}, "Alert", "Ok");
+            navigator.notification.alert("Login failed", function(){}, "Alert", "Ok");
           
           loading.endLoading();
         }
@@ -145,59 +143,6 @@ function postLogout(accessId)
         }
 }
 
-function storeNotification(data){
-      
-        db.transaction(function(tx) {
-            
-            tx.executeSql('DROP TABLE IF EXISTS notifylist');
-            
-            tx.executeSql('CREATE TABLE IF NOT EXISTS notifylist (issueID text, issueDate text, sysName text, sysContact text, sysLoc text, issueSts text, notified text, readSts text, ipAdd text)');
-            
-//            tx.executeSql('DELETE FROM notifylist');
-                       
-            var len = data.length;
-            
-            for(var i=0; i<len; i++)
-            {
-                
-                var issueID=data[i].ISSUE_ID;
-                var issueDate=data[i].ISSUE_DATE;
-                var sysName=data[i].SYSTEM_NAME;
-                var sysContact=data[i].SYSTEM_CONTACT;  
-                var sysLoc=data[i].SYSTEM_LOCATION;
-                var issueSts=data[i].ISSUE_STATUS;
-                var notified= data[i].NOTIFIED;
-                var readSts=data[i].READ_STATUS;
-                var ipAdd=data[i].IP_ADDRESS; 
-
-                var notificationData = {
-                values1 : [issueID, issueDate, sysName, sysContact, sysLoc, issueSts,notified,readSts,ipAdd]
-                };
-              
-                tx.executeSql(
-                    'INSERT INTO notifylist (issueID, issueDate, sysName, sysContact, sysLoc, issueSts,notified,readSts,ipAdd) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                    notificationData.values1,
-                    successNotifyLogin,
-                    errorNotifyLogin
-                );
-           
-                
-            }
-                        
-        });
-
-}
-
-
-function errorNotifyLogin(err){
-    loading.endLoading();
-    navigator.notification.alert("Store error", function(){}, "Alert", "Ok");
-}
-
-function successNotifyLogin(){
-    loading.endLoading();
-}
-
 function storeProfile(data) {
     
         var uid=data.USER_ID;
@@ -240,6 +185,55 @@ function errorLogin(err){
 function successLogin(){
 
     window.location="notification.html";
+}
+
+function storeNotification(data){
+      
+        db.transaction(function(tx) {
+            
+            tx.executeSql('DROP TABLE IF EXISTS notifylist');
+            
+            tx.executeSql('CREATE TABLE IF NOT EXISTS notifylist (issueID text, issueDate text, sysName text, sysContact text, sysLoc text, issueSts text, notified text, readSts text, ipAdd text)');
+                       
+            var len = data.length;
+            
+            for(var i=0; i<len; i++)
+            {   
+                var issueID=data[i].ISSUE_ID;
+                var issueDate=data[i].ISSUE_DATE;
+                var sysName=data[i].SYSTEM_NAME;
+                var sysContact=data[i].SYSTEM_CONTACT;  
+                var sysLoc=data[i].SYSTEM_LOCATION;
+                var issueSts=data[i].ISSUE_STATUS;
+                var notified= data[i].NOTIFIED;
+                var readSts=data[i].READ_STATUS;
+                var ipAdd=data[i].IP_ADDRESS; 
+
+                var notificationData = {
+                values1 : [issueID, issueDate, sysName, sysContact, sysLoc, issueSts,notified,readSts,ipAdd]
+                };
+              
+                tx.executeSql(
+                    'INSERT INTO notifylist (issueID, issueDate, sysName, sysContact, sysLoc, issueSts,notified,readSts,ipAdd) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                    notificationData.values1,
+                    successNotifyLogin,
+                    errorNotifyLogin
+                );
+
+            }
+                        
+        });
+
+}
+
+
+function errorNotifyLogin(err){
+    loading.endLoading();
+    navigator.notification.alert("Login failed", function(){}, "Alert", "Ok");
+}
+
+function successNotifyLogin(){
+    loading.endLoading();
 }
 
 //------------------------------------------------------------

@@ -15,17 +15,17 @@
         
         <script type="text/javascript" src="js/jquery-mobile/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="js/common.js"></script>
+        <script type="text/javascript" src="js/notification.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/webRequest.js"></script>
-       <!-- <script type="text/javascript" src="js/jquery-mobile/jquery.mobile-1.4.5.js"></script>-->
-       
+
         <script type="text/javascript">
             
              document.addEventListener("deviceready", onDeviceReady, false);
        
             function onBackKeyDown(e) {
                 e.preventDefault();
-                navigator.notification.confirm("Are you sure you want to exit ?", onExitConfirm, "Confirmation", "Yes,No", false);     
+                navigator.notification.confirm("Are you sure to exit ?", onExitConfirm, "Confirmation", "Yes,No", false);     
             }
             
             dbmanager.initdb();
@@ -33,13 +33,13 @@
             
           $(function(){
 
-              $( "#logout" ).click(function() {
+              $("#logout").click(function() {
                   
                   navigator.notification.confirm("Are you sure you want to sign out ?", onSignOutConfirm, "Confirmation", "Yes,No", false);     
                     
                   });
 
-              $( "#notifybox" ).delegate('div.notifyview', 'click', function() {
+              $("#notifybox").delegate('div.notifyview', 'click', function() {
 
                   var idtext = $(this).attr('id');
                    var url = "detail.html?name=" + idtext;
