@@ -37,7 +37,7 @@ var sharing={
                               }
                         }
                  
-                 issDate=returnData.rows.item(count).issueDate;
+                 issDate=setDetailDateFormat(returnData.rows.item(count).issueDate);
                  sysName=returnData.rows.item(count).sysName;
                  issSts=returnData.rows.item(count).issueSts;
                  
