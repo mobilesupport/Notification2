@@ -90,21 +90,6 @@ function postNotification(accessId){
 
         storeNotification(data);
           
-          dbmanager.getNotifyListData(function(returnData){
-        
-             if(returnData.rows.length>0){
-                 var count = returnData.rows.length;
-                    var contained_divs = '';
-                 
-                for(var i=0;i<count;i++)
-                {
-                    contained_divs += '<div class="notifyview" id="'+returnData.rows.item(i).issueID +'"><label id="headline">'+ setNotifyDateFormat(returnData.rows.item(i).issueDate) +'</label> <label id="headline">'+ returnData.rows.item(i).sysName +' </label><label id="notifymsg">'+ returnData.rows.item(i).issueSts +' </label></div>';
-
-                }
-                $('#notifybox').append(contained_divs);
-
-            }   
-  });    
       },
       error:function (xhr, ajaxOptions, thrownError){
            //Login unsuccessfully
@@ -167,7 +152,7 @@ function postLogout(accessId)
         }
 }
 
-function postDelete(issueId)
+function postDelete(issueId,accessId)
 {
 
     var requestUrl="http://192.168.1.19/notification_api/api/notification/PostDeleteNotification";
@@ -186,7 +171,8 @@ function postDelete(issueId)
           success: function(data, status, xhr) {
 
               navigator.notification.alert(xhr.responseText, function(){}, "Alert", "Ok");
-                window.location.href = "notification.html";
+             
+               postNotification(accessId);
             
           },
           error:function (xhr, ajaxOptions, thrownError){
@@ -194,7 +180,7 @@ function postDelete(issueId)
               if(xhr.status==0)
                 {}
               else
-                navigator.notification.alert(newJsonObj.Message, function(){}, "Alert", "Ok");
+                navigator.notification.alert(xhr.responseText, function(){}, "Alert", "Ok");
 
               loading.endLoading();
             }
@@ -232,7 +218,7 @@ function storeProfile(data) {
                 tx.executeSql(
                     'INSERT INTO userprofile (uid, name, email, phoneno, date, staffno,udesignation,ulogin,ustatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', 
                     profile.values1,
-                    successLogin,
+                    successLogin(uid),
                     errorLogin
                 );
             
@@ -246,8 +232,8 @@ function errorLogin(err){
     navigator.notification.alert("Login failed.", function(){}, "Alert", "Ok");
 }
 
-function successLogin(){
-    window.location="notification.html";
+function successLogin(uid){
+    postNotification(uid);
 }
 
 function storeNotification(data){
@@ -279,7 +265,7 @@ function storeNotification(data){
                 tx.executeSql(
                     'INSERT INTO notifylist (issueID, issueDate, sysName, sysContact, sysLoc, issueSts,notified,readSts,ipAdd) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
                     notificationData.values1,
-                    successNotifyLogin,
+                    successNotifyLogin(i,len),
                     errorNotifyLogin
                 );
 
@@ -295,8 +281,12 @@ function errorNotifyLogin(err){
     navigator.notification.alert("Login failed", function(){}, "Alert", "Ok");
 }
 
-function successNotifyLogin(){
-    loading.endLoading();
+function successNotifyLogin(i,len){
+    if(i == (len-1))
+        {
+            window.location="notification.html";
+            loading.endLoading();
+        }
 }
 
 //------------------------------------------------------------

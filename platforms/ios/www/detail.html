@@ -38,6 +38,10 @@
         displayMsgDetail(pageNum); //To display specific notification msg detail 
         
         $(function () {
+            
+            $("#backbtn").click(function() {
+               window.history.back(); //Back to previous page
+            });
            
              $("#previous").click(function() {
                  
@@ -78,9 +82,9 @@
         <div class="menuheader">
 
         <div class="headerside"> 
-            <a href="notification.html">
-				<button class="headerbtn" style="width: 50px"><img class="backbutton" src="img/back.png"></button>
-			</a>
+           
+				<button class="headerbtn" style="width: 50px"><img class="backbutton" src="img/back.png" id="backbtn"></button>
+			
  </div>
         <div class="title">Notification</div>
 		<div class="headerside">  </div>
