@@ -1,7 +1,3 @@
-
-//------------------------------------------------------------------------
-//------------------------------------------------------------------------
-//------------------------------------------------------------------------
 //init custom sharing sheet
 var sharing={
 
@@ -19,7 +15,7 @@ var sharing={
     },
     
     closeShareSheet:function(){
-        $("#sharesheetbg").remove();
+        $("#sharesheetbg").remove(); //close the sharing page
     },
 
     
@@ -47,7 +43,7 @@ var sharing={
                  
                  msg = "Issue Date: "+issDate +"\n\n"+"System Name: "+sysName+"\n\n"+"Issue Status: "+issSts;
                  
-                 window.plugins.socialsharing.shareViaWhatsApp(msg, null, null, function() {}, function(errormsg){alert(errormsg)});
+                 window.plugins.socialsharing.shareViaWhatsApp(msg, null, null, function() {}, function(errormsg){alert("Share failed")});
              
              }   
             else{
@@ -59,6 +55,3 @@ var sharing={
     
 
 }
-
-
-

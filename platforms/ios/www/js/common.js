@@ -100,8 +100,7 @@ function appendDetail(pageNum){
      dbmanager.getNotifyListData(function(returnData){
 
      if(returnData.rows.length>0){
-
-             $('#dt_detail').html(returnData.rows.item(pageNum).issueDate);
+             $('#dt_detail').html(setDetailDateFormat(returnData.rows.item(pageNum).issueDate));
              $('#ip_detail').html(returnData.rows.item(pageNum).ipAdd);
              $('#sys_detail').html(returnData.rows.item(pageNum).sysName);
              $('#syscon_detail').html(returnData.rows.item(pageNum).sysContact);
@@ -110,4 +109,41 @@ function appendDetail(pageNum){
         }
     }); 
 }
+
+function setDetailDateFormat(str)
+{
+    //set date time format to yyyy/mm/dd hh:mm:ss
+    return str.substring(0,4)+"/"+str.substring(4,6)+"/"+str.substring(6,8)+"  "+ str.substring(8,10)+":"+str.substring(10,12)+":"+str.substring(12,14)
+}
+
+function setNotifyDateFormat(str)
+{
+    //set date time format to dd/mm/yyyy hh:mm:am/pm
+    
+    var getHour = str.substring(8,10);
+    var hour;
+    var ext;
+    
+    if(getHour > 12){
+        ext = 'pm';
+        hour = getHour - 12;
+    }
+    if(getHour < 12){
+        
+        hour = getHour;
+        ext = 'am';
+    }
+    if(getHour == 12){
+        hour = getHour;
+        ext = 'pm';
+    }
+    if(getHour == 00){
+        hour = 12;
+        ext = 'am';
+    }
+
+
+    return str.substring(6,8)+"/"+str.substring(4,6)+"/"+str.substring(0,4)+"  "+ hour+":"+str.substring(10,12)+ext;
+}
+    
     

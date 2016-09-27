@@ -1,7 +1,9 @@
 function displayMsgDetail(pageNum){
-  
+    
+        //For 1st entry from notification page to detail page
        if (idString == null) {
            
+           //To get the issueID from the url
            if (window.location.search.split('?').length > 1) {
                
                 var params = window.location.search.split('?')[1].split('&');
@@ -9,7 +11,7 @@ function displayMsgDetail(pageNum){
                     var key = params[i].split('=')[0];
                     var value = decodeURIComponent(params[i].split('=')[1]);
 
-                    idString = value;
+                    idString = value;//get the issueID
                 }
             }
            
@@ -28,7 +30,7 @@ function displayMsgDetail(pageNum){
                               break;
                           }
                     }
-                    pageMovement(pageNum); 
+                    pageNavigatorDisplay(pageNum); 
                     appendDetail(pageNum);
                     
                  }   
@@ -38,12 +40,13 @@ function displayMsgDetail(pageNum){
                 }
           });    
         }else{
-            
+            //When users move from one detail to another detail
             dbmanager.getNotifyListData(function(returnData){
 
                 if(returnData.rows.length>0){
+                    //To get current issueID
                     idString = returnData.rows.item(pageNum).issueID;
-                    pageMovement(pageNum); 
+                    pageNavigatorDisplay(pageNum); 
                     appendDetail(pageNum);
                  }   
                 else{
@@ -57,24 +60,25 @@ function displayMsgDetail(pageNum){
 
 function sharetoSocial(){
 
-        sharing.initShareSheet();
+        sharing.initShareSheet();//share to Whatsapp
 }
 
-function pageMovement(passNum)
+//To decide which page navigator (previous and/or next) to dispaly
+function pageNavigatorDisplay(passNum)
 {
     pageNum = passNum;
 
      if(pageNum == 0){
 
-        $( "#previous" ).hide();
+        $("#previous").hide();
     }else{
-        $( "#previous" ).show();
+        $("#previous").show();
     }
 
     if(pageNum == totalPage){
-        $( "#next" ).hide();
+        $("#next").hide();
     }else{
-        $( "#next" ).show();
+        $("#next").show();
     }
                    
 }

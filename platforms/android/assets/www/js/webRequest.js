@@ -95,11 +95,10 @@ function postNotification(accessId){
              if(returnData.rows.length>0){
                  var count = returnData.rows.length;
                     var contained_divs = '';
-                  
+                 
                 for(var i=0;i<count;i++)
                 {
-                   
-                    contained_divs += '<div class="notifyview" id="'+returnData.rows.item(i).issueID +'"><label id="headline">'+ returnData.rows.item(i).issueDate +'</label> <label id="headline">'+ returnData.rows.item(i).sysName +' </label><label id="notifymsg">'+ returnData.rows.item(i).issueSts +' </label></div>';
+                    contained_divs += '<div class="notifyview" id="'+returnData.rows.item(i).issueID +'"><label id="headline">'+ setNotifyDateFormat(returnData.rows.item(i).issueDate) +'</label> <label id="headline">'+ returnData.rows.item(i).sysName +' </label><label id="notifymsg">'+ returnData.rows.item(i).issueSts +' </label></div>';
 
                 }
                 $('#notifybox').append(contained_divs);
@@ -151,7 +150,9 @@ function postLogout(accessId)
           error:function (xhr, ajaxOptions, thrownError){
               //Log out unsuccessfully
               if(xhr.status==0)
-                {}
+                {
+                    navigator.notification.alert("Log out unsucessfully", function(){}, "Alert", "Ok");
+                }
               else
                 navigator.notification.alert("Log out unsucessfully", function(){}, "Alert", "Ok");
 

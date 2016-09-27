@@ -14,7 +14,7 @@
     
      <title>Notification Detail</title>
 
-     <script type="text/javascript" src="js/jquery-mobile/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery-mobile/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/common.js"></script>
     <script type="text/javascript" src="js/detail.js"></script>
     <script type="text/javascript" src="js/sharing.js"></script>
@@ -24,12 +24,12 @@
     <script type="text/javascript">
         
         var idString; //issueID of current notification msg
-        var pageNum=0;//current number of of notification msg, 0 is intialised for non-empty param
+        var pageNum=0;//current number of of notification msg, 0 is initiaed for non-empty param
         var totalPage;//total number of notification msg
         
         document.addEventListener("deviceready", onDeviceReady, false);
         
-        //When keypress on phone backpress button
+        //When keypress on phone backpressed button
         function onBackKeyDown(e) {
             e.preventDefault();
             window.history.back(); //Back to previous page
@@ -39,7 +39,7 @@
         
         $(function () {
            
-             $( "#previous" ).click(function() {
+             $("#previous").click(function() {
                  
                  if(pageNum > 0)
                   {
@@ -48,7 +48,7 @@
                   }
             });
 
-             $( "#next" ).click(function() {  
+             $("#next").click(function() {  
                  if(pageNum < totalPage)
                   {
                       pageNum = pageNum+1;
@@ -56,12 +56,12 @@
                   } 
             });
 
-             $( "#delete" ).click(function() {
+             $("#delete").click(function() {
                  
                   navigator.notification.confirm("Are you sure to delete this record?", onDeleteConfirm, "Confirmation", "Yes,No", false);     
             });
 
-            $( "#share" ).click(function() {
+            $("#share").click(function() {
                 sharetoSocial();
             });
 
