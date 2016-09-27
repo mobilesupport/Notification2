@@ -51,7 +51,7 @@
             
                  $(function () {
                 
-                //password field gets focused when key press on "Go" at keyboard in username field as tab function
+                //password field gets focused when keypress on "Go" at keyboard in username field as tab function
                  $("#username").keypress(function(e) {
                     var code = (e.keyCode ? e.keyCode : e.which);
                     if ( (code==13) || (code==10))
@@ -60,7 +60,7 @@
                         }
                 });
                 
-                //submit btn gets focused when key press on "Go" at keyboard in password field as tab function
+                //submit btn gets focused when keypress on "Go" at keyboard in password field as tab function
                  $("#password").keypress(function(e) {
                 var code = (e.keyCode ? e.keyCode : e.which);
                 if ( (code==13) || (code==10))

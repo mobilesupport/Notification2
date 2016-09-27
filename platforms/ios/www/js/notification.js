@@ -10,9 +10,6 @@ function onSignOutConfirm(button) {
                  postLogout(accessId);
     
                 }   
-            else{
-                alert("Data retrieved failed");
-            }
         });    
         
     }else{
@@ -20,23 +17,47 @@ function onSignOutConfirm(button) {
     }
 }
 
+function notifyNetworkChecking(){
+  //Checking internet availability
+      if(navigator.network.connection.type == Connection.NONE){
+           
+          navigator.notification.alert("No internet connection.", function(){}, "Alert", "Ok");  
+           notificationListDisplay();
+          
+      }else{ 
+            retrieveNotificationList();
+        }
+}
 
-function notificationListDisplay(){
 
-           dbmanager.getNotifyListData(function(returnData){
-        
-             if(returnData.rows.length>0){
-                 var count = returnData.rows.length;
-                    var contained_divs = '';
-                 
-                for(var i=0;i<count;i++)
-                {
-                    contained_divs += '<div class="notifyview" id="'+returnData.rows.item(i).issueID +'"><label id="headline">'+ setNotifyDateFormat(returnData.rows.item(i).issueDate) +'</label> <label id="headline">'+ returnData.rows.item(i).sysName +' </label><label id="notifymsg">'+ returnData.rows.item(i).issueSts +' </label></div>';
+function retrieveNotificationList(){          
+    //Retriev notification data from local storage ans display
+    dbmanager.getUserProfileData(function(returnData){
 
-                }
-                $('#notifybox').append(contained_divs);
-
-            }   
-  });    
+         if(returnData.rows.length>0){
+             var accessId = returnData.rows.item(0).uid;
+             postNotification(accessId);
+        }   
+    });    
 
 };
+
+function notificationListDisplay(){
+    
+    //Display all notification msg in list view from local storage
+    dbmanager.getNotifyListData(function(returnData){
+
+     if(returnData.rows.length>0){
+         var count = returnData.rows.length;
+            var contained_divs = '';
+
+        for(var i=0;i<count;i++)
+        {
+            contained_divs += '<div class="notifyview" id="'+returnData.rows.item(i).issueID +'"><label id="headline">'+ setNotifyDateFormat(returnData.rows.item(i).issueDate) +'</label> <label id="headline">'+ returnData.rows.item(i).sysName +' </label><label id="notifymsg">'+ returnData.rows.item(i).issueSts +' </label></div>';
+
+        }
+        $('#notifybox').append(contained_divs);
+
+            }   
+        });  
+}

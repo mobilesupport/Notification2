@@ -82,11 +82,9 @@ function postNotification(accessId){
       timeout: apiTimeOut,    
       success: function(data, status, xhr) {
  
-        //Login successfully
-        //Store notification message data in local storage for later retrieve purpose
+        storeNotification(data);//Store notification message data in local storage
+        notificationListDisplay();  
 
-        storeNotification(data);
-          
       },
       error:function (xhr, ajaxOptions, thrownError){
            //Login unsuccessfully
@@ -140,11 +138,10 @@ function postLogout(accessId)
         })
 
         }
-        catch(ex){
-        }
+        catch(ex){}
 }
 
-function postDelete(issueId,accessId)
+function postDelete(issueId)
 {
 
     var requestUrl="http://192.168.1.19/notification_api/api/notification/PostDeleteNotification";
@@ -163,8 +160,7 @@ function postDelete(issueId,accessId)
           success: function(data, status, xhr) {
 
               navigator.notification.alert(xhr.responseText, function(){}, "Alert", "Ok");
-             
-               postNotification(accessId);
+             window.location.href = "notification.html";
             
           },
           error:function (xhr, ajaxOptions, thrownError){
@@ -208,7 +204,7 @@ function storeProfile(data) {
                 tx.executeSql(
                     'INSERT INTO userprofile (uid, name, email, phoneno, date, staffno,udesignation,ulogin,ustatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', 
                     profile.values1,
-                    successLogin(uid),
+                    successLogin,
                     errorLogin
                 );
             
@@ -222,8 +218,8 @@ function errorLogin(err){
     navigator.notification.alert("Login failed.", function(){}, "Alert", "Ok");
 }
 
-function successLogin(uid){
-    postNotification(uid);
+function successLogin(){
+     window.location.href = "notification.html";
 }
 
 function storeNotification(data){
@@ -256,13 +252,12 @@ function storeNotification(data){
                     tx.executeSql(
                         'INSERT INTO notifylist (issueID, issueDate, sysName, sysContact, sysLoc, issueSts,notified,readSts,ipAdd) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
                         notificationData.values1,
-                        successNotifyLogin(i,len),
+                        successNotifyLogin(),
                         errorNotifyLogin
                     );
+                     loading.endLoading();
 
                 }
-            }else{
-                 window.location="notification.html";
             }
                         
         });
@@ -271,17 +266,10 @@ function storeNotification(data){
 
 
 function errorNotifyLogin(err){
-    loading.endLoading();
     navigator.notification.alert("Login failed", function(){}, "Alert", "Ok");
 }
 
-function successNotifyLogin(i,len){
-    if(i == (len-1))
-    {
-        window.location="notification.html";
-        loading.endLoading();
-    }
-}
+function successNotifyLogin(){}
 
 //------------------------------------------------------------
 //------------------------------------------------------------

@@ -60,6 +60,7 @@ function onDeviceReady() {
 
 function networkChecking(){
     //Checking internet availability
+ 
   if(navigator.network.connection.type == Connection.NONE){
 
       navigator.notification.alert("No internet connection.", function(){}, "Alert", "Ok");    
@@ -68,6 +69,7 @@ function networkChecking(){
   }else{ 
       return true; }
 }
+
 
 function onExitConfirm(button) {
     if(button==2){
