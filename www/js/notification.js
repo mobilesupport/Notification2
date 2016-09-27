@@ -21,17 +21,19 @@ function notifyNetworkChecking(){
   //Checking internet availability
       if(navigator.network.connection.type == Connection.NONE){
            
-          navigator.notification.alert("No internet connection.", function(){}, "Alert", "Ok");  
+          navigator.notification.alert("No internet connection.", function(){}, "Alert", "Ok"); 
+          //retrieve current data from local storage if no internet
            notificationListDisplay();
           
       }else{ 
+          //reload data from the server and restore in local storage
             retrieveNotificationList();
         }
 }
 
 
 function retrieveNotificationList(){          
-    //Retriev notification data from local storage ans display
+
     dbmanager.getUserProfileData(function(returnData){
 
          if(returnData.rows.length>0){
