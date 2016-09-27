@@ -62,10 +62,7 @@ function postLogin(username, password){
     })
         
     }
-    catch(ex){
-        
-       navigator.notification.alert("Login failed", function(){}, "Alert", "Ok");
-    }
+    catch(ex){}
 }
 
 function postNotification(accessId){
@@ -103,10 +100,7 @@ function postNotification(accessId){
     })
         
     }
-    catch(ex){
-        
-        alert(ex.message);
-    }
+    catch(ex){}
 }
 
 function postLogout(accessId)
@@ -136,19 +130,17 @@ function postLogout(accessId)
               //Log out unsuccessfully
               if(xhr.status==0)
                 {
-                    navigator.notification.alert("Log out unsucessfully", function(){}, "Alert", "Ok");
+                    navigator.notification.alert(xhr.statusText,function(){}, "Alert", "Ok");
                 }
               else
-                navigator.notification.alert("Log out unsucessfully", function(){}, "Alert", "Ok");
-
+                navigator.notification.alert(xhr.responseText, function(){}, "Alert", "Ok");
+                
               loading.endLoading();
             }
         })
 
         }
         catch(ex){
-
-            alert(ex.message);
         }
 }
 
@@ -178,7 +170,9 @@ function postDelete(issueId,accessId)
           error:function (xhr, ajaxOptions, thrownError){
             
               if(xhr.status==0)
-                {}
+                {
+                     navigator.notification.alert(xhr.statusText,function(){}, "Alert", "Ok");
+                }
               else
                 navigator.notification.alert(xhr.responseText, function(){}, "Alert", "Ok");
 
@@ -187,10 +181,7 @@ function postDelete(issueId,accessId)
         })
 
         }
-        catch(ex){
-
-            alert(ex.message);
-        }
+        catch(ex){}
 }
 
 function storeProfile(data) {
@@ -209,7 +200,6 @@ function storeProfile(data) {
             tx.executeSql('DROP TABLE IF EXISTS userprofile');
            
             tx.executeSql('CREATE TABLE IF NOT EXISTS userprofile (uid text, name text, email text, phoneno text, date text, staffno text, udesignation text, ulogin text, ustatus text)');
-//            tx.executeSql('DELETE FROM userprofile');
 
                 var profile = {
                 values1 : [uid, name, email, phoneno, date, staffno,udesignation,ulogin,ustatus]
@@ -245,30 +235,34 @@ function storeNotification(data){
             tx.executeSql('CREATE TABLE IF NOT EXISTS notifylist (issueID text, issueDate text, sysName text, sysContact text, sysLoc text, issueSts text, notified text, readSts text, ipAdd text)');
            
             var len = data.length;
-            
-            for(var i=0; i<len; i++)
-            {   
-                var issueID=data[i].ISSUE_ID;
-                var issueDate=data[i].ISSUE_DATE;
-                var sysName=data[i].SYSTEM_NAME;
-                var sysContact=data[i].SYSTEM_CONTACT;  
-                var sysLoc=data[i].SYSTEM_LOCATION;
-                var issueSts=data[i].ISSUE_STATUS;
-                var notified= data[i].NOTIFIED;
-                var readSts=data[i].READ_STATUS;
-                var ipAdd=data[i].IP_ADDRESS; 
+           
+            if(len!=0){
+                for(var i=0; i<len; i++)
+                {   
+                    var issueID=data[i].ISSUE_ID;
+                    var issueDate=data[i].ISSUE_DATE;
+                    var sysName=data[i].SYSTEM_NAME;
+                    var sysContact=data[i].SYSTEM_CONTACT;  
+                    var sysLoc=data[i].SYSTEM_LOCATION;
+                    var issueSts=data[i].ISSUE_STATUS;
+                    var notified= data[i].NOTIFIED;
+                    var readSts=data[i].READ_STATUS;
+                    var ipAdd=data[i].IP_ADDRESS; 
 
-                var notificationData = {
-                values1 : [issueID, issueDate, sysName, sysContact, sysLoc, issueSts,notified,readSts,ipAdd]
-                };
-              
-                tx.executeSql(
-                    'INSERT INTO notifylist (issueID, issueDate, sysName, sysContact, sysLoc, issueSts,notified,readSts,ipAdd) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                    notificationData.values1,
-                    successNotifyLogin(i,len),
-                    errorNotifyLogin
-                );
+                    var notificationData = {
+                    values1 : [issueID, issueDate, sysName, sysContact, sysLoc, issueSts,notified,readSts,ipAdd]
+                    };
 
+                    tx.executeSql(
+                        'INSERT INTO notifylist (issueID, issueDate, sysName, sysContact, sysLoc, issueSts,notified,readSts,ipAdd) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                        notificationData.values1,
+                        successNotifyLogin(i,len),
+                        errorNotifyLogin
+                    );
+
+                }
+            }else{
+                 window.location="notification.html";
             }
                         
         });
@@ -283,10 +277,10 @@ function errorNotifyLogin(err){
 
 function successNotifyLogin(i,len){
     if(i == (len-1))
-        {
-            window.location="notification.html";
-            loading.endLoading();
-        }
+    {
+        window.location="notification.html";
+        loading.endLoading();
+    }
 }
 
 //------------------------------------------------------------

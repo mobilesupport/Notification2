@@ -34,10 +34,7 @@ function displayMsgDetail(pageNum){
                     appendDetail(pageNum);
                     
                  }   
-                else{
-                    alert("Data retrieve failed");
 
-                }
           });    
         }else{
             //When users move from one detail to another detail
@@ -49,10 +46,7 @@ function displayMsgDetail(pageNum){
                     pageNavigatorDisplay(pageNum); 
                     appendDetail(pageNum);
                  }   
-                else{
-                    alert("Data retrieve failed");
 
-                }
           }); 
         }
 };
@@ -94,9 +88,7 @@ function onDeleteConfirm(button) {
              var accessId = returnData.rows.item(0).uid;
              postDelete(idString,accessId); //Delete the msg   
         }   
-        else{
-            alert("Data retrieved failed");
-        }
+   
     });    
         
     }else{
