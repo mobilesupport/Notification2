@@ -57,10 +57,11 @@ function sharetoSocial(){
         sharing.initShareSheet();//share to Whatsapp
 }
 
-//To decide which page navigator (previous and/or next) to dispaly
-function pageNavigatorDisplay(passNum)
+
+function pageNavigatorDisplay(currentPageNum)
 {
-    pageNum = passNum;
+    //To decide which page navigator (previous and/or next) to dispaly
+    pageNum = currentPageNum;
 
      if(pageNum == 0){
 
@@ -85,7 +86,5 @@ function onDeleteConfirm(button) {
         
              postDelete(idString); //Delete the msg   
    
-    }else{
-        //To do nothing but dimiss the dialog when user clicks on the screen rather than yes-no button
     }
 }
