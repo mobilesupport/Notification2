@@ -118,14 +118,14 @@ function postLogout(accessId)
           data:"accessId=" + accessId + "&checksum=" + hashedStr,
           timeout: apiTimeOut,    
           success: function(data, status, xhr) {
-              //Log out successfully
+      
               var newJsonObj=$.parseJSON(xhr.responseText);
               
               navigator.notification.alert(newJsonObj.Message, function(){}, "Alert", "Ok");
                 window.location.href = "index.html";
           },
           error:function (xhr, ajaxOptions, thrownError){
-              //Log out unsuccessfully
+             
               if(xhr.status==0)
                 {
                     navigator.notification.alert(xhr.statusText,function(){}, "Alert", "Ok");
@@ -231,8 +231,7 @@ function storeNotification(data){
             tx.executeSql('CREATE TABLE IF NOT EXISTS notifylist (issueID text, issueDate text, sysName text, sysContact text, sysLoc text, issueSts text, notified text, readSts text, ipAdd text)');
            
             var len = data.length;
-           
-            if(len!=0){
+  
                 for(var i=0; i<len; i++)
                 {   
                     var issueID=data[i].ISSUE_ID;
@@ -252,14 +251,13 @@ function storeNotification(data){
                     tx.executeSql(
                         'INSERT INTO notifylist (issueID, issueDate, sysName, sysContact, sysLoc, issueSts,notified,readSts,ipAdd) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
                         notificationData.values1,
-                        successNotifyLogin(),
+                        successNotifyLogin,
                         errorNotifyLogin
                     );
                      loading.endLoading();
 
                 }
-            }
-                        
+         
         });
 
 }
