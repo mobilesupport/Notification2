@@ -12,8 +12,6 @@ function onSignOutConfirm(button) {
                 }   
         });    
         
-    }else{
-        //To do nothing but dimiss the dialog when user clicks on the screen rather than yes-no button
     }
 }
 
@@ -26,14 +24,13 @@ function notifyNetworkChecking(){
            notificationListDisplay();
           
       }else{ 
-          //reload data from the server and restore in local storage
             retrieveNotificationList();
-        }
+	  } 
 }
 
 
 function retrieveNotificationList(){          
-
+//reload data from the server and restore in local storage
     dbmanager.getUserProfileData(function(returnData){
 
          if(returnData.rows.length>0){
@@ -51,14 +48,14 @@ function notificationListDisplay(){
 
      if(returnData.rows.length>0){
          var count = returnData.rows.length;
-            var contained_divs = '';
+            var containedDivs = '';
 
         for(var i=0;i<count;i++)
         {
-            contained_divs += '<div class="notifyview" id="'+returnData.rows.item(i).issueID +'"><label id="headline">'+ setNotifyDateFormat(returnData.rows.item(i).issueDate) +'</label> <label id="headline">'+ returnData.rows.item(i).sysName +' </label><label id="notifymsg">'+ returnData.rows.item(i).issueSts +' </label></div>';
+            containedDivs += '<div class="notifyview" id="'+returnData.rows.item(i).issueID +'"><label id="headline">'+ setNotifyDateFormat(returnData.rows.item(i).issueDate) +'</label> <label id="headline">'+ returnData.rows.item(i).sysName +' </label><label id="notifymsg">'+ returnData.rows.item(i).issueSts +' </label></div>';
 
         }
-        $('#notifybox').append(contained_divs);
+        $('#notifybox').append(containedDivs);
 
             }   
         });  

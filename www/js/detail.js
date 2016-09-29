@@ -2,7 +2,7 @@ function displayMsgDetail(pageNum){
     
         //For 1st entry from notification page to detail page
        if (idString == null) {
-           
+          
            //To get the issueID from the url
            if (window.location.search.split('?').length > 1) {
                
@@ -14,7 +14,7 @@ function displayMsgDetail(pageNum){
                     idString = value;//get the issueID
                 }
             }
-           
+      
                 dbmanager.getNotifyListData(function(returnData){
 
                 if(returnData.rows.length>0){
