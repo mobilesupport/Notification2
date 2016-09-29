@@ -19,7 +19,7 @@
     padding: 16px;
 }
 
-#headline{
+.headline{
     font-weight: bold;
     display: block;
     margin-bottom: 15px;
@@ -33,7 +33,7 @@
     text-align:left;
 }
 
-#notifymsg{
+.notifymsg{
     display: block;
     text-align: justify;
     margin-left: 16px;

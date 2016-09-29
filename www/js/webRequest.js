@@ -74,6 +74,7 @@ function postNotification(accessId){
     var requestUrl=webApiUrlDomain + "/api/notification/PostNotification";
     var valueStr=accessId+sha1Key;
     var hashedStr=SHA1(valueStr);
+    var getMsg = "accessId=" + accessId + "&checksum=" + hashedStr;
     
     try{
         $.ajax({
