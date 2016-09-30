@@ -43,12 +43,11 @@ var sharing={
                  
                  msg = "Issue Date: "+issDate +"\n\n"+"System Name: "+sysName+"\n\n"+"Issue Status: "+issSts;
                  
+                 //Open Whatsapp application to share the msg
                  window.plugins.socialsharing.shareViaWhatsApp(msg, null, null, function() {}, function(errormsg){alert("Share failed")});
              
              }   
-            else{
-                alert("Data retrieved failed");
-            }
+           
         });   
         
     },

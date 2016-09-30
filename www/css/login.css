@@ -2,13 +2,15 @@
   position: relative;
   top: 25%; 
   margin: 0 auto; 
-  width: 310px;
+  width: 70%;
   height: 310px;
   padding: 30px;
+
+  text-align: center;
 }
 
 .app input[type=text], .app input[type=password] {
-  width: 232px;
+  width: 45vw;
   margin: 0 auto;
   padding: 0 10px;
   height: 32px;
@@ -25,18 +27,26 @@ img {
 }
 
 #companylogo{
+    width: 70vw;
     display:block;
     margin: 0 auto;
 }
 
 #loginlogo{
-    width:42px;
-    height:42px; 
+    width:12vw;
+    height:36px; 
     margin-right:5px
 }
 
 #submitlogo{
-    width:42px;
-    height:42px; 
+    width:12vw;
+    height:36px; 
     float:right;
+}
+
+#field{
+    width: 67vw;
+    display: inline-block;
+    margin: 0 auto;
+    clear: left;
 }
