@@ -6,7 +6,7 @@ function onSignOutConfirm(button) {
          dbmanager.getUserProfileData(function(returnData){
 
              if(returnData.rows.length>0){
-                 var accessId = returnData.rows.item(0).uid;
+                 var accessId = returnData.rows.item(0).UserID;
                  postLogout(accessId);
     
                 }   
@@ -34,7 +34,7 @@ function retrieveNotificationList(){
     dbmanager.getUserProfileData(function(returnData){
 
          if(returnData.rows.length>0){
-             var accessId = returnData.rows.item(0).uid;
+             var accessId = returnData.rows.item(0).UserID;
              postNotification(accessId);
         }   
     });    

@@ -24,7 +24,7 @@ var dbmanager = {
     getUserProfileData:function(returnData){
         db.transaction(function(tx){
             
-            tx.executeSql("SELECT * FROM userprofile", [], function(tx, rs){
+            tx.executeSql("SELECT * FROM UserProfile", [], function(tx, rs){
                 returnData(rs);
           }, this.errorExecuteSQL);
         });

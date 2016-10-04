@@ -25,7 +25,7 @@ function requestLogin(username, password){
          
       error:function (xhr, ajaxOptions, thrownError){
            loading.endLoading();
-           navigator.notification.alert(xhr.responseText, function(){}, "Alert", "Ok");
+           navigator.notification.alert("Server down. Please try again later.", function(){}, "Alert", "Ok");
           
         }
     }) 
@@ -48,6 +48,7 @@ function postLogin(username, password){
       data:"loginId=" + username + "&password="+password+"&registrationId="+ registrationId + "&checksum=" + hashedStr,
       timeout: apiTimeOut,    
       success: function(data, status, xhr) {
+         // alert(JSON.stringify(data));
           //Store user profile data in local storage for later retrieve purpose
           storeProfile(data);
       },
@@ -204,16 +205,16 @@ function storeProfile(data) {
         var ustatus=data.USER_STATUS; 
        
         db.transaction(function(tx) {
-            tx.executeSql('DROP TABLE IF EXISTS userprofile');
+            tx.executeSql('DROP TABLE IF EXISTS UserProfile');
            
-            tx.executeSql('CREATE TABLE IF NOT EXISTS userprofile (uid text, name text, email text, phoneno text, date text, staffno text, udesignation text, ulogin text, ustatus text)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS UserProfile (UserID text, UserName text, email text, phoneno text, date text, staffno text, Designation text, ulogin text, ustatus text)');
 
                 var profile = {
                 values1 : [uid, name, email, phoneno, date, staffno,udesignation,ulogin,ustatus]
                 };
 
                 tx.executeSql(
-                    'INSERT INTO userprofile (uid, name, email, phoneno, date, staffno,udesignation,ulogin,ustatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', 
+                    'INSERT INTO UserProfile (UserID, UserName, email, phoneno, date, staffno,Designation,ulogin,ustatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', 
                     profile.values1,
                     successLogin,
                     errorLogin
