@@ -38,8 +38,8 @@ var sharing={
                         }
                  
                  issDate=setDetailDateFormat(returnData.rows.item(count).issueDate);
-                 sysName=returnData.rows.item(count).sysName;
-                 issSts=returnData.rows.item(count).issueSts;
+                 sysName=returnData.rows.item(count).SystemName;
+                 issSts=returnData.rows.item(count).IssueStatus;
                  
                  msg = "Issue Date: "+issDate +"\n\n"+"System Name: "+sysName+"\n\n"+"Issue Status: "+issSts;
                  

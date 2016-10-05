@@ -196,25 +196,22 @@ function storeProfile(data) {
     
         var uid=data.USER_ID;
         var name=data.USER_NAME;
-        var email=data.USER_EMAIL;
-        var phoneno=data.USER_PHONE;  
-        var date=data.DATE_CREATED;
         var staffno=data.STAFF_NO;
         var udesignation= data.USER_DESIGNATION;
-        var ulogin=data.USER_LOGIN;
-        var ustatus=data.USER_STATUS; 
+        var logintype = "";
+        var userole ="";
        
         db.transaction(function(tx) {
             tx.executeSql('DROP TABLE IF EXISTS UserProfile');
            
-            tx.executeSql('CREATE TABLE IF NOT EXISTS UserProfile (UserID text, UserName text, email text, phoneno text, date text, staffno text, Designation text, ulogin text, ustatus text)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS UserProfile (UserID text, UserName text,Designation text, UserRole text, StaffNo text, loginType text)');
 
                 var profile = {
-                values1 : [uid, name, email, phoneno, date, staffno,udesignation,ulogin,ustatus]
-                };
+                values1 : [uid, name,udesignation,userole,staffno,logintype]
+                }
 
                 tx.executeSql(
-                    'INSERT INTO UserProfile (UserID, UserName, email, phoneno, date, staffno,Designation,ulogin,ustatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', 
+                    'INSERT INTO UserProfile (UserID, UserName,Designation,UserRole,StaffNo,loginType) VALUES (?, ?, ?, ?, ?, ?)', 
                     profile.values1,
                     successLogin,
                     errorLogin
@@ -227,7 +224,8 @@ function storeProfile(data) {
 
 function errorLogin(err){
 
-    navigator.notification.alert("Login failed.", function(){}, "Alert", "Ok");
+    navigator.notification.alert("Login failed", function(){}, "Alert", "Ok");
+    loading.endLoading();
 }
 
 function successLogin(){
@@ -238,9 +236,9 @@ function storeNotification(data){
       
         db.transaction(function(tx) {
             
-            tx.executeSql('DROP TABLE IF EXISTS notifylist');
+            tx.executeSql('DROP TABLE IF EXISTS NotificationList');
             
-            tx.executeSql('CREATE TABLE IF NOT EXISTS notifylist (issueID text, issueDate text, sysName text, sysContact text, sysLoc text, issueSts text, notified text, readSts text, ipAdd text)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS NotificationList (issueID text, issueDate text, SystemName text, SystemContact text, SystemLocation text, IssueStatus text, read text, IpAdress text)');
             
           if(data!= null && data.length!=0){
                 var len = data.length;
@@ -253,16 +251,15 @@ function storeNotification(data){
                         var sysContact=data[i].SYSTEM_CONTACT;  
                         var sysLoc=data[i].SYSTEM_LOCATION;
                         var issueSts=data[i].ISSUE_STATUS;
-                        var notified= data[i].NOTIFIED;
                         var readSts=data[i].READ_STATUS;
                         var ipAdd=data[i].IP_ADDRESS; 
 
                         var notificationData = {
-                        values1 : [issueID, issueDate, sysName, sysContact, sysLoc, issueSts,notified,readSts,ipAdd]
+                        values1 : [issueID, issueDate, sysName, sysContact, sysLoc, issueSts,readSts,ipAdd]
                         };
 
                         tx.executeSql(
-                            'INSERT INTO notifylist (issueID, issueDate, sysName, sysContact, sysLoc, issueSts,notified,readSts,ipAdd) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                            'INSERT INTO NotificationList (issueID, issueDate, SystemName, SystemContact, SystemLocation, IssueStatus,read,IpAdress) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
                             notificationData.values1,
                             successNotifyLogin,
                             errorNotifyLogin
@@ -281,6 +278,7 @@ function storeNotification(data){
 
 function errorNotifyLogin(err){
     navigator.notification.alert("Login failed", function(){}, "Alert", "Ok");
+    loading.endLoading();
 }
 
 function successNotifyLogin(){

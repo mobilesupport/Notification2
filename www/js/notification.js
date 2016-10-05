@@ -52,7 +52,7 @@ function notificationListDisplay(){
 
         for(var i=0;i<count;i++)
         {
-            containedDivs += '<div class="notifyview" id="'+returnData.rows.item(i).issueID +'"><label class="headline" id="nfdatetime">'+ setNotifyDateFormat(returnData.rows.item(i).issueDate) +'</label> <label class="headline" id="nfsysname">'+ returnData.rows.item(i).sysName +' </label><label class="notifymsg" id="nfstatus">'+ returnData.rows.item(i).issueSts +' </label></div>';
+            containedDivs += '<div class="notifyview" id="'+returnData.rows.item(i).issueID +'"><label class="headline" id="nfdatetime">'+ setNotifyDateFormat(returnData.rows.item(i).issueDate) +'</label> <label class="headline" id="nfsysname">'+ returnData.rows.item(i).SystemName +' </label><label class="notifymsg" id="nfstatus">'+ returnData.rows.item(i).IssueStatus +' </label></div>';
 
         }
         $('#notifybox').append(containedDivs);

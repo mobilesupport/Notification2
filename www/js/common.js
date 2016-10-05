@@ -34,7 +34,7 @@ var dbmanager = {
     //select notfication data
     getNotifyListData:function(returnData){
         db.transaction(function(tx){
-           tx.executeSql('SELECT * FROM notifylist', [], function(tx, rs){
+           tx.executeSql('SELECT * FROM NotificationList', [], function(tx, rs){
               
                 returnData(rs);
           }, this.errorExecuteSQL);
@@ -101,11 +101,11 @@ function appendDetail(pageNum){
 
      if(returnData.rows.length>0){
              $('#dtdetail').html(setDetailDateFormat(returnData.rows.item(pageNum).issueDate));
-             $('#ipdetail').html(returnData.rows.item(pageNum).ipAdd);
-             $('#sysdetail').html(returnData.rows.item(pageNum).sysName);
-             $('#syscondetail').html(returnData.rows.item(pageNum).sysContact);
-             $('#syslcdetail').html(returnData.rows.item(pageNum).sysLoc);
-             $('#stsdetail').html(returnData.rows.item(pageNum).issueSts);
+             $('#ipdetail').html(returnData.rows.item(pageNum).IpAdress);
+             $('#sysdetail').html(returnData.rows.item(pageNum).SystemName);
+             $('#syscondetail').html(returnData.rows.item(pageNum).SystemContact);
+             $('#syslcdetail').html(returnData.rows.item(pageNum).SystemLocation);
+             $('#stsdetail').html(returnData.rows.item(pageNum).IssueStatus);
         }
     }); 
 }
