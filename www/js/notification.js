@@ -49,14 +49,52 @@ function notificationListDisplay(){
      if(returnData.rows.length>0){
          var count = returnData.rows.length;
             var containedDivs = '';
+            var backgroundColor, color;
 
-        for(var i=0;i<count;i++)
-        {
-            containedDivs += '<div class="notifyview" id="'+returnData.rows.item(i).issueID +'"><label class="headline" id="nfdatetime">'+ setNotifyDateFormat(returnData.rows.item(i).issueDate) +'</label> <label class="headline" id="nfsysname">'+ returnData.rows.item(i).SystemName +' </label><label class="notifymsg" id="nfstatus">'+ returnData.rows.item(i).IssueStatus +' </label></div>';
+                for(var i=0;i<count;i++)
+                {   
+                    if(returnData.rows.item(i).read==0)
+                        {
+                            //If the msg is unread
+                            backgroundColor = "white";
+                            color = "black";
+                        }else{
+                            backgroundColor = "grey";
+                            color = "black";
+                        }
 
-        }
-        $('#notifybox').append(containedDivs);
+                    containedDivs += '<div class="notifyview" id="'+returnData.rows.item(i).issueID +'" style="background-color:'+backgroundColor+'; color:'+color+';"><label class="headline" id="nfdatetime">'+ setNotifyDateFormat(returnData.rows.item(i).issueDate) +'</label> <label class="headline" id="nfsysname">'+ returnData.rows.item(i).SystemName +' </label><label class="notifymsg" id="nfstatus">'+ returnData.rows.item(i).IssueStatus +' </label></div>';
+
+                }
+                $('#notifybox').append(containedDivs);
 
             }   
         });  
+}
+
+function checkMsgReadStatus(issueId)
+{
+    
+     dbmanager.getNotifyListData(function(returnData){
+
+     if(returnData.rows.length>0){
+         var count = returnData.rows.length;
+         var readStatus;
+      
+                for(var i=0;i<count;i++)
+                {   
+                   if(returnData.rows.item(i).issueID == issueId)
+                       {
+                           readStatus = returnData.rows.item(i).read;
+//                           alert("this read: "+readStatus);
+                           break;
+                       }
+                }
+                
+                 if(readStatus==0){   
+                     
+                     postRead(issueId);
+                 }
+            }   
+        });   
 }

@@ -12,8 +12,6 @@
 .notifyview{
    display: block;
     height: 100px;
-    background-color: white;
-    color: black;
     margin-top: 3px; 
     cursor:pointer;
     padding: 16px;

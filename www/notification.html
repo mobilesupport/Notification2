@@ -27,6 +27,7 @@
 
                 document.addEventListener("backbutton", onBackKeyDown, false);
                 notifyNetworkChecking(); 
+                
             }
             
             //When keypress on phone backpressed button
@@ -39,6 +40,7 @@
 
             
           $(function(){
+              
               //When click on logout btn
               $("#logout").click(function() {
                   
@@ -48,11 +50,12 @@
             
               //When click on one of the notification msgs  
               $("#notifybox").delegate('div.notifyview', 'click', function() {
-                 
+               
                   var idText = $(this).attr('id'); //To get the issueID of the notification msg clicked
                   var url = "detail.html?name=" + idText; //To combine the url with the issueID at the back
-
-                    window.location.href = url;
+                  
+                  checkMsgReadStatus(idText);
+                  window.location.href = url;
               });
 
             });  

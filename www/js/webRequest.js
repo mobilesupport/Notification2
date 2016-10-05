@@ -1,7 +1,7 @@
 var apiTimeOut = 20000;
 var sha1Key = 8345627;
-var registrationId; 
-var webApiUrlDomain="http://192.168.1.19/notification_api";
+var registrationId,userId; 
+var webApiUrlDomain="http://cloud.projeksistematik.com.my/apecianotification";
 var contentType = "application/x-www-form-urlencoded";
 
 function setRegistrationId(regId){
@@ -48,7 +48,7 @@ function postLogin(username, password){
       data:"loginId=" + username + "&password="+password+"&registrationId="+ registrationId + "&checksum=" + hashedStr,
       timeout: apiTimeOut,    
       success: function(data, status, xhr) {
-         // alert(JSON.stringify(data));
+         
           //Store user profile data in local storage for later retrieve purpose
           storeProfile(data);
       },
@@ -71,6 +71,8 @@ function postLogin(username, password){
 }
 
 function postNotification(accessId){
+    
+    userId = accessId;
  
     var requestUrl=webApiUrlDomain + "/api/notification/PostNotification";
     var valueStr=accessId+sha1Key;
@@ -109,9 +111,47 @@ function postNotification(accessId){
     }
 }
 
+function postRead(issueId){
+
+    var requestUrl=webApiUrlDomain + "/api/notification/PostReadNotification";
+    var valueStr=accessId+issueId+sha1Key;
+    var hashedStr=SHA1(valueStr);
+    
+    try{
+        $.ajax({
+      url: requestUrl,
+      method: "POST",
+      headers: {
+        "Content-Type": contentType
+      },
+      data:"accessId=" + userId+ "&issueId=" + issueId + "&checksum=" + hashedStr,
+      timeout: apiTimeOut,    
+      success: function(data, status, xhr) {
+         //Read successfully
+           
+           navigator.notification.alert(xhr.resoponseText, function(){}, "Alert", "Ok");
+      },
+      error:function (xhr, ajaxOptions, thrownError){
+           //Read unsuccessfully
+          if(xhr.status==0)
+            {
+                 navigator.notification.alert(xhr.status, function(){}, "Alert", "Ok");
+            }
+          else
+            navigator.notification.alert(xhr.resoponseText, function(){}, "Alert", "Ok");
+
+        }
+    })
+        
+    }
+    catch(ex){
+         //show error message
+    }
+}
+
 function postLogout(accessId)
 {
-
+    alert("this UserID: "+userId);
     var requestUrl=webApiUrlDomain + "/api/logout/logout";
     var valueStr=accessId+sha1Key;
     var hashedStr=SHA1(valueStr);
