@@ -151,7 +151,6 @@ function postRead(issueId){
 
 function postLogout(accessId)
 {
-    alert("this UserID: "+userId);
     var requestUrl=webApiUrlDomain + "/api/logout/logout";
     var valueStr=accessId+sha1Key;
     var hashedStr=SHA1(valueStr);
