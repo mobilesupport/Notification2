@@ -111,11 +111,12 @@ function postNotification(accessId){
     }
 }
 
-function postRead(issueId){
+function postRead(issueId,url){
 
     var requestUrl=webApiUrlDomain + "/api/notification/PostReadNotification";
-    var valueStr=accessId+issueId+sha1Key;
+    var valueStr=userId+issueId+sha1Key;
     var hashedStr=SHA1(valueStr);
+
     
     try{
         $.ajax({
@@ -128,18 +129,15 @@ function postRead(issueId){
       timeout: apiTimeOut,    
       success: function(data, status, xhr) {
          //Read successfully
-           
-           navigator.notification.alert(xhr.resoponseText, function(){}, "Alert", "Ok");
+           window.location.href = url;
+
       },
       error:function (xhr, ajaxOptions, thrownError){
            //Read unsuccessfully
           if(xhr.status==0)
             {
-                 navigator.notification.alert(xhr.status, function(){}, "Alert", "Ok");
+                //show error
             }
-          else
-            navigator.notification.alert(xhr.resoponseText, function(){}, "Alert", "Ok");
-
         }
     })
         

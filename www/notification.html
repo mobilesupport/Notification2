@@ -18,6 +18,7 @@
         <script type="text/javascript" src="js/notification.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/webRequest.js"></script>
+    <script type="text/javascript" src="js/sharing.js"></script>
 
         <script type="text/javascript">
             
@@ -54,8 +55,8 @@
                   var idText = $(this).attr('id'); //To get the issueID of the notification msg clicked
                   var url = "detail.html?name=" + idText; //To combine the url with the issueID at the back
                   
-                  checkMsgReadStatus(idText);
-                  window.location.href = url;
+                  checkMsgReadStatus(idText,url);
+            
               });
 
             });  

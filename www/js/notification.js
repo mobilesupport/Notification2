@@ -59,7 +59,7 @@ function notificationListDisplay(){
                             backgroundColor = "white";
                             color = "black";
                         }else{
-                            backgroundColor = "grey";
+                            backgroundColor = "lightgrey";
                             color = "black";
                         }
 
@@ -72,7 +72,7 @@ function notificationListDisplay(){
         });  
 }
 
-function checkMsgReadStatus(issueId)
+function checkMsgReadStatus(issueId,url)
 {
     
      dbmanager.getNotifyListData(function(returnData){
@@ -86,14 +86,15 @@ function checkMsgReadStatus(issueId)
                    if(returnData.rows.item(i).issueID == issueId)
                        {
                            readStatus = returnData.rows.item(i).read;
-//                           alert("this read: "+readStatus);
                            break;
                        }
                 }
                 
                  if(readStatus==0){   
                      
-                     postRead(issueId);
+                     postRead(issueId,url);
+                 }else{
+                       window.location.href = url;
                  }
             }   
         });   
