@@ -21,25 +21,25 @@
     <preference name="android-minSdkVersion" value="14" />
     <preference name="android-installLocation" value="auto" />
     <preference name="android-windowSoftInputMode" value="adjustResize|stateHidden" />
-    <gap:plugin name="cordova-plugin-battery-status" />
-    <gap:plugin name="cordova-plugin-camera" />
-    <gap:plugin name="cordova-plugin-media-capture" />
-    <gap:plugin name="cordova-plugin-console" />
-    <gap:plugin name="cordova-plugin-contacts" />
-    <gap:plugin name="cordova-plugin-device" />
-    <gap:plugin name="cordova-plugin-device-motion" />
-    <gap:plugin name="cordova-plugin-device-orientation" />
-    <gap:plugin name="cordova-plugin-dialogs" />
-    <gap:plugin name="cordova-plugin-file" />
-    <gap:plugin name="cordova-plugin-file-transfer" />
-    <gap:plugin name="cordova-plugin-geolocation" />
-    <gap:plugin name="cordova-plugin-globalization" />
-    <gap:plugin name="cordova-plugin-inappbrowser" />
-    <gap:plugin name="cordova-plugin-media" />
-    <gap:plugin name="cordova-plugin-network-information" />
-    <gap:plugin name="cordova-plugin-splashscreen" />
-    <gap:plugin name="cordova-plugin-vibration" />
-    <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
+    <plugin name="cordova-plugin-battery-status" />
+    <plugin name="cordova-plugin-camera" />
+    <plugin name="cordova-plugin-media-capture" />
+    <plugin name="cordova-plugin-console" />
+    <plugin name="cordova-plugin-contacts" />
+    <plugin name="cordova-plugin-device" />
+    <plugin name="cordova-plugin-device-motion" />
+    <plugin name="cordova-plugin-device-orientation" />
+    <plugin name="cordova-plugin-dialogs" />
+    <plugin name="cordova-plugin-file" />
+    <plugin name="cordova-plugin-file-transfer" />
+    <plugin name="cordova-plugin-geolocation" />
+    <plugin name="cordova-plugin-globalization" />
+    <plugin name="cordova-plugin-inappbrowser" />
+    <plugin name="cordova-plugin-media" />
+    <plugin name="cordova-plugin-network-information" />
+    <plugin name="cordova-plugin-splashscreen" />
+    <plugin name="cordova-plugin-vibration" />
+    <plugin name="cordova-plugin-x-socialsharing" source="npm" />
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="www/res/icon/android/icon-48-mdpi.png" />
