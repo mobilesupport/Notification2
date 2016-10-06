@@ -124,6 +124,20 @@ function retrieveUserId(){
 
 };
 
+function userExisitingValidation(){          
+//reload userID from database
+    dbmanager.getUserProfileData(function(returnData){
+
+         if(returnData.rows.length>0){
+             window.location.href = "notification.html";
+        }
+        else{
+            networkChecking(); //Check internet availability once device ready
+        }
+    });    
+
+};
+
 function setDetailDateFormat(str)
 {
     //set date time format to yyyy/mm/dd hh:mm:ss

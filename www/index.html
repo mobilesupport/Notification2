@@ -23,6 +23,14 @@
             
             document.addEventListener("deviceready", onDeviceReady, false);
             
+            function onDeviceReady() {
+
+                document.addEventListener("backbutton", onBackKeyDown, false);
+                
+                userExisitingValidation();//Check if user is logged in before
+                
+            }
+            
             //When keypress on phone backpressed button
             function onBackKeyDown(e) {
                 e.preventDefault();

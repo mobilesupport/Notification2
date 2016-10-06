@@ -96,8 +96,6 @@ function onDeleteConfirm(button) {
     }
 }
 
-
-
 function checkMsgReadStatus(issueId)
 {//To validate whether the msg is read
       
@@ -124,4 +122,3 @@ function checkMsgReadStatus(issueId)
             }   
         });   
 }
-

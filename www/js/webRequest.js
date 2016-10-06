@@ -59,7 +59,9 @@ function postLogin(username, password){
       },
       error:function (xhr, ajaxOptions, thrownError){
           if(xhr.status==0)
-            {}
+            {
+                //show error
+            }
           else{
               var newJsonObj=$.parseJSON(xhr.responseText);
               navigator.notification.alert(newJsonObj.Message, function(){}, "Alert", "Ok");
@@ -120,7 +122,6 @@ function postRead(issueId){
     var valueStr=userId+issueId+sha1Key;
     var hashedStr=SHA1(valueStr);
 
-    
     try{
         $.ajax({
       url: requestUrl,
@@ -152,7 +153,6 @@ function postRead(issueId){
 
 function postLogout(accessId)
 {
-    
     var requestUrl=webApiUrlDomain + "/api/logout/logout";
     var valueStr=accessId+sha1Key;
     var hashedStr=SHA1(valueStr);
@@ -194,7 +194,6 @@ function postLogout(accessId)
 
 function postDelete(issueId)
 {
-
     var requestUrl=webApiUrlDomain + "/api/notification/PostDeleteNotification";
     var valueStr=issueId+sha1Key;
     var hashedStr=SHA1(valueStr);
