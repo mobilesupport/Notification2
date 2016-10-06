@@ -62,6 +62,7 @@ var app = {
             // data.image,
             // data.additionalData
             retrieveNotificationList();
+            
         });
 
         push.on('error', function(e) {
