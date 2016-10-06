@@ -125,17 +125,18 @@ function retrieveUserId(){
 };
 
 function userExisitingValidation(){          
-
+ 
     dbmanager.getUserProfileData(function(returnData){
 
          if(returnData.rows.length>0){
+             
              //If the user is logged in bfr, directly go to notification page
+             loading.startLoading();
              window.location.href = "notification.html";
         }
-        else{
-            networkChecking(); //Check internet availability once device ready
-        }
+
     });    
+
 
 };
 

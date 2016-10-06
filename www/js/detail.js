@@ -60,7 +60,6 @@ function displayMsgDetail(pageNum){
 
 
 function sharetoSocial(){
-
         sharing.initShareSheet();//share to Whatsapp
 }
 
@@ -90,9 +89,7 @@ function onDeleteConfirm(button) {
     if(button==2){
         return; //To do nothing when click "No" button
     }else if(button==1){
-        
              postDelete(idString); //Delete the msg   
-   
     }
 }
 

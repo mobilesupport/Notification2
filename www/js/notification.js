@@ -59,8 +59,8 @@ function notificationListDisplay(){
                             backgroundColor = "white";
                             color = "black";
                         }else{
-                            backgroundColor = "lightgrey";
-                            color = "black";
+                            backgroundColor = "#E8E8E8";
+                            color = "#5E5E5E";
                         }
 
                     containedDivs += '<div class="notifyview" id="'+returnData.rows.item(i).issueID +'" style="background-color:'+backgroundColor+'; color:'+color+';"><label class="headline" id="nfdatetime">'+ setNotifyDateFormat(returnData.rows.item(i).issueDate) +'</label> <label class="headline" id="nfsysname">'+ returnData.rows.item(i).SystemName +' </label><label class="notifymsg" id="nfstatus">'+ returnData.rows.item(i).IssueStatus +' </label></div>';
@@ -70,4 +70,6 @@ function notificationListDisplay(){
 
             }   
         });  
+    
+    loading.endLoading();
 }

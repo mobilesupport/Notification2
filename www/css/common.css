@@ -20,7 +20,7 @@
     width: 100%;
     top: 0;
     left: 0;
-    background: #d9d9d9;
+    background: #0000FF;
  
 }
 
@@ -28,15 +28,14 @@
     width: 20%;
 	height: inherit;
 	float:left;
-
 }
 
 .headerbtn{
-	width: 70px;
+	width: 50px;
 	height: 50px;
 	font-weight: 300;
 	font-size: 18px;
-    color: #00AAFF;
+    color: white;
     background-color: transparent;
     background-repeat:no-repeat;
     border: none;

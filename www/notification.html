@@ -54,8 +54,7 @@
                
                   var idText = $(this).attr('id'); //To get the issueID of the notification msg clicked
                   var url = "detail.html?name=" + idText; //To combine the url with the issueID at the back
-                  
-                 // alert("idtext: "+idText);
+           
                   window.location.href = url;
   
               });
@@ -72,10 +71,17 @@
         <div class="menuheader">
         
         <div class="headerside">
-            <button type="button" id="logout" class="headerbtn" style="margin-left: 4px;"> Logout </button>
+
         </div>
-        <div class="title">Notification</div>
-		<div class="headerside"></div>
+        <div class="title"></div>
+		
+        <div class="headerside">
+            <button type="button" id="logout" class="headerbtn" style="margin-left: 4px;"> Logout </button>
+
+            
+<!--            <button class="headerbtn" style="float:right;"><img src="img/menu.png" id="menubtn"></button>-->
+            
+        </div>
          
     </div>
         
