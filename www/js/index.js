@@ -61,6 +61,7 @@ var app = {
             // data.sound,
             // data.image,
             // data.additionalData
+            retrieveNotificationList();
         });
 
         push.on('error', function(e) {
