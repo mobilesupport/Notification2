@@ -12,7 +12,9 @@ function displayMsgDetail(pageNum){
                     var value = decodeURIComponent(params[i].split('=')[1]);
 
                     idString = value;//get the issueID
+                     
                 }
+               
             }
       
                 dbmanager.getNotifyListData(function(returnData){
@@ -32,10 +34,12 @@ function displayMsgDetail(pageNum){
                     }
                     pageNavigatorDisplay(pageNum); 
                     appendDetail(pageNum);
-                    
+                    checkMsgReadStatus(idString);
                  }   
 
-          });    
+          });   
+            
+           
         }else{
             //When users move from one detail to another detail
             dbmanager.getNotifyListData(function(returnData){
@@ -43,11 +47,14 @@ function displayMsgDetail(pageNum){
                 if(returnData.rows.length>0){
                     //To get current issueID
                     idString = returnData.rows.item(pageNum).issueID;
+                     
                     pageNavigatorDisplay(pageNum); 
                     appendDetail(pageNum);
+                    checkMsgReadStatus(idString);
                  }   
 
           }); 
+            
         }
 };
 
@@ -88,3 +95,33 @@ function onDeleteConfirm(button) {
    
     }
 }
+
+
+
+function checkMsgReadStatus(issueId)
+{//To validate whether the msg is read
+      
+     dbmanager.getNotifyListData(function(returnData){
+
+     if(returnData.rows.length>0){
+         var count = returnData.rows.length;
+         var readStatus;
+      
+                for(var i=0;i<count;i++)
+                {   
+                   if(returnData.rows.item(i).issueID == issueId)
+                       {
+                           readStatus = returnData.rows.item(i).read;
+                           break;
+                       }
+                }
+                
+                 if(readStatus==0){   
+                     //if the msg is not read
+                     postRead(issueId);
+                 }
+                 
+            }   
+        });   
+}
+

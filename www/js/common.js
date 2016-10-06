@@ -100,15 +100,29 @@ function appendDetail(pageNum){
      dbmanager.getNotifyListData(function(returnData){
 
      if(returnData.rows.length>0){
-             $('#dtdetail').html(setDetailDateFormat(returnData.rows.item(pageNum).issueDate));
+            $('#dtdetail').html(setDetailDateFormat(returnData.rows.item(pageNum).issueDate));
              $('#ipdetail').html(returnData.rows.item(pageNum).IpAdress);
              $('#sysdetail').html(returnData.rows.item(pageNum).SystemName);
              $('#syscondetail').html(returnData.rows.item(pageNum).SystemContact);
              $('#syslcdetail').html(returnData.rows.item(pageNum).SystemLocation);
              $('#stsdetail').html(returnData.rows.item(pageNum).IssueStatus);
+         
         }
     }); 
+    
 }
+
+function retrieveUserId(){          
+//reload userID from database
+    dbmanager.getUserProfileData(function(returnData){
+
+         if(returnData.rows.length>0){
+             var accessId = returnData.rows.item(0).UserID;
+             setUserId(accessId);
+        }   
+    });    
+
+};
 
 function setDetailDateFormat(str)
 {

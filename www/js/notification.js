@@ -71,31 +71,3 @@ function notificationListDisplay(){
             }   
         });  
 }
-
-function checkMsgReadStatus(issueId,url)
-{
-    
-     dbmanager.getNotifyListData(function(returnData){
-
-     if(returnData.rows.length>0){
-         var count = returnData.rows.length;
-         var readStatus;
-      
-                for(var i=0;i<count;i++)
-                {   
-                   if(returnData.rows.item(i).issueID == issueId)
-                       {
-                           readStatus = returnData.rows.item(i).read;
-                           break;
-                       }
-                }
-                
-                 if(readStatus==0){   
-                     
-                     postRead(issueId,url);
-                 }else{
-                       window.location.href = url;
-                 }
-            }   
-        });   
-}

@@ -36,7 +36,7 @@
                 e.preventDefault();
                 navigator.notification.confirm("Are you sure to exit?", onExitConfirm, "Confirmation", "Yes,No", false);     
             }
-           
+            
             dbmanager.initdb();
 
             
@@ -55,8 +55,9 @@
                   var idText = $(this).attr('id'); //To get the issueID of the notification msg clicked
                   var url = "detail.html?name=" + idText; //To combine the url with the issueID at the back
                   
-                  checkMsgReadStatus(idText,url);
-            
+                 // alert("idtext: "+idText);
+                  window.location.href = url;
+  
               });
 
             });  

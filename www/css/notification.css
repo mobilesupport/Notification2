@@ -11,7 +11,7 @@
 
 .notifyview{
    display: block;
-    height: 100px;
+    height: 60px;
     margin-top: 3px; 
     cursor:pointer;
     padding: 16px;
@@ -20,7 +20,7 @@
 .headline{
     font-weight: bold;
     display: block;
-    margin-bottom: 15px;
+    margin-bottom: 2px;
 }
 
 .scrollul{

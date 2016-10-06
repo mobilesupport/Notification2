@@ -9,6 +9,11 @@ function setRegistrationId(regId){
     registrationId = regId;
 }
 
+function setUserId(accessId){
+    //To set user id for global variable use 
+    userId = accessId;
+}
+
 function requestLogin(username, password){
 
         $.ajax({
@@ -71,9 +76,7 @@ function postLogin(username, password){
 }
 
 function postNotification(accessId){
-    
-    userId = accessId;
- 
+
     var requestUrl=webApiUrlDomain + "/api/notification/PostNotification";
     var valueStr=accessId+sha1Key;
     var hashedStr=SHA1(valueStr);
@@ -111,7 +114,7 @@ function postNotification(accessId){
     }
 }
 
-function postRead(issueId,url){
+function postRead(issueId){
 
     var requestUrl=webApiUrlDomain + "/api/notification/PostReadNotification";
     var valueStr=userId+issueId+sha1Key;
@@ -129,15 +132,15 @@ function postRead(issueId,url){
       timeout: apiTimeOut,    
       success: function(data, status, xhr) {
          //Read successfully
-           window.location.href = url;
-
+          
       },
       error:function (xhr, ajaxOptions, thrownError){
            //Read unsuccessfully
           if(xhr.status==0)
             {
                 //show error
-            }
+            }else
+                 navigator.notification.alert(xhr.responseText, function(){}, "Alert", "Ok");
         }
     })
         
@@ -149,6 +152,7 @@ function postRead(issueId,url){
 
 function postLogout(accessId)
 {
+    
     var requestUrl=webApiUrlDomain + "/api/logout/logout";
     var valueStr=accessId+sha1Key;
     var hashedStr=SHA1(valueStr);
