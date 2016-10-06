@@ -125,10 +125,11 @@ function retrieveUserId(){
 };
 
 function userExisitingValidation(){          
-//reload userID from database
+
     dbmanager.getUserProfileData(function(returnData){
 
          if(returnData.rows.length>0){
+             //If the user is logged in bfr, directly go to notification page
              window.location.href = "notification.html";
         }
         else{
