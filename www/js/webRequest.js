@@ -171,7 +171,14 @@ function postLogout(accessId)
               var newJsonObj=$.parseJSON(xhr.responseText);
               
               navigator.notification.alert(newJsonObj.Message, function(){}, "Alert", "Ok");
-                window.location.href = "index.html";
+              
+              tx.executeSql("DROP TABLE UserProfile",[], 
+                function(tx,results){
+                  window.location.href = "index.html";
+                },
+              
+            );
+              
           },
           error:function (xhr, ajaxOptions, thrownError){
              
