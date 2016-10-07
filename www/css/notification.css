@@ -127,6 +127,7 @@
     color: black;
     text-align: center;
     border-top: 1px solid grey;
+    z-index: 3;
 }
 
 .menubutton{
