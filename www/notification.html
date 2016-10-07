@@ -21,7 +21,7 @@
     <script type="text/javascript" src="js/sharing.js"></script>
 
         <script type="text/javascript">
-            var logoutCheck=false;
+            var menuCheck=false; //to intialize the menu icon is unclicked
             
              document.addEventListener("deviceready", onDeviceReady, false);
             
@@ -50,12 +50,13 @@
                 });
               
               $("#menu").click(function() {
-                    if(logoutCheck == false){
+                    if(menuCheck == false){
+                        //show menu list
                         $("#menulist").show();
-                        logoutCheck = true;
+                        menuCheck = true;
                     }else{
                          $("#menulist").hide();
-                        logoutCheck = false;
+                        menuCheck = false;
                     }
                     
                   });
@@ -82,15 +83,15 @@
         <div class="menuheader">
         
         <div class="title">
+            
           <button class="headerlogo" style="margin-left:8px;">
                 <img src="img/appicon.png" id="applogo">
               </button>
             <label class="titlename">Apecia Notification</label>
+            
         </div>
 		
         <div class="headerside">
-<!--            <button type="button" id="logout" class="headerbtn" style="margin-left: 4px;"> Logout </button>-->
-
             
             <button class="headerbtn" style="float:right;"><img src="img/menu.png" id="menu"></button>
             
@@ -106,7 +107,12 @@
                 <ul class="scrollul">
                         <div id="notifybox"></div>
                 </ul>
-        </div>
+    </div>
+    
+    <label class="appfooter">
+        Powered by ProjekSistematik
+    </label>    
+        
     </div>
     
 </body>     
