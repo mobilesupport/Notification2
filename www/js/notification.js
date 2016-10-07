@@ -1,9 +1,14 @@
 function onSignOutConfirm(button) {
     if(button==2){
+        
         $("#menulist").hide();
         menuCheck = false;
+        
     }else if(button==1){
-
+        
+        $("#menulist").hide();
+        menuCheck = false;
+        
          dbmanager.getUserProfileData(function(returnData){
 
              if(returnData.rows.length>0){
