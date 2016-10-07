@@ -24,6 +24,12 @@
  
 }
 
+.menuheaderblock{
+    width: 100%;
+    height: 50px;
+    background-color: aqua;
+}
+
 .headerside{
     width: 20%;
 	height: inherit;
@@ -74,13 +80,12 @@
 }
 
 .container{
-     position: absolute;
+     
      width: 100%;
-    height: 90%;
-     top:50px;
-     left: 0;
+     height: auto;
      overflow:auto;
      z-index:1;
+    margin-bottom: 20px;
 }
 
 #applogo{
