@@ -1,6 +1,7 @@
 function onSignOutConfirm(button) {
     if(button==2){
         
+        //hide menu list
         $("#menulist").hide();
         menuCheck = false;
         

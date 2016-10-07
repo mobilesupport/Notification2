@@ -101,7 +101,7 @@ function appendDetail(pageNum){
 
      if(returnData.rows.length>0){
             $('#dtdetail').html(setDetailDateFormat(returnData.rows.item(pageNum).issueDate));
-             $('#ipdetail').html(returnData.rows.item(pageNum).IpAdress);
+             $('#ipdetail').html(returnData.rows.item(pageNum).IpAddress);
              $('#sysdetail').html(returnData.rows.item(pageNum).SystemName);
              $('#syscondetail').html(returnData.rows.item(pageNum).SystemContact);
              $('#syslcdetail').html(returnData.rows.item(pageNum).SystemLocation);

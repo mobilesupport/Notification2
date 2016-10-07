@@ -286,7 +286,7 @@ function storeNotification(data){
             
             tx.executeSql('DROP TABLE IF EXISTS NotificationList');
             
-            tx.executeSql('CREATE TABLE IF NOT EXISTS NotificationList (issueID text, issueDate text, SystemName text, SystemContact text, SystemLocation text, IssueStatus text, read text, IpAdress text)');
+            tx.executeSql('CREATE TABLE IF NOT EXISTS NotificationList (issueID text, issueDate text, SystemName text, SystemContact text, SystemLocation text, IssueStatus text, read text, IpAddress text)');
             
           if(data!= null && data.length!=0){
                 var len = data.length;
@@ -307,7 +307,7 @@ function storeNotification(data){
                         };
 
                         tx.executeSql(
-                            'INSERT INTO NotificationList (issueID, issueDate, SystemName, SystemContact, SystemLocation, IssueStatus,read,IpAdress) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+                            'INSERT INTO NotificationList (issueID, issueDate, SystemName, SystemContact, SystemLocation, IssueStatus,read,IpAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
                             notificationData.values1,
                             successNotifyLogin,
                             errorNotifyLogin
