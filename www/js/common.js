@@ -131,7 +131,6 @@ function userExisitingValidation(){
          if(returnData.rows.length>0){
              
              //If the user is logged in bfr, directly go to notification page
-             loading.startLoading();
              window.location.href = "notification.html";
         }
 

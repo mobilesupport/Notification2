@@ -25,7 +25,7 @@
              document.addEventListener("deviceready", onDeviceReady, false);
             
             function onDeviceReady() {
-
+                loading.startLoading();
                 document.addEventListener("backbutton", onBackKeyDown, false);
                 notifyNetworkChecking(); 
                 
