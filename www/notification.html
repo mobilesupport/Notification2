@@ -21,6 +21,7 @@
     <script type="text/javascript" src="js/sharing.js"></script>
 
         <script type="text/javascript">
+            var logoutCheck=false;
             
              document.addEventListener("deviceready", onDeviceReady, false);
             
@@ -41,7 +42,6 @@
 
             
           $(function(){
-              var check=false;
               //When click on logout btn
               $("#logout").click(function() {
                   
@@ -50,12 +50,12 @@
                 });
               
               $("#menu").click(function() {
-                    if(check == false){
+                    if(logoutCheck == false){
                         $("#menulist").show();
-                        check = true;
+                        logoutCheck = true;
                     }else{
                          $("#menulist").hide();
-                        check = false;
+                        logoutCheck = false;
                     }
                     
                   });

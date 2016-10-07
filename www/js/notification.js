@@ -1,5 +1,7 @@
 function onSignOutConfirm(button) {
     if(button==2){
+        $("#menulist").hide();
+        logoutCheck = false;
         return;//To do nothing when click "No" button
     }else if(button==1){
 
