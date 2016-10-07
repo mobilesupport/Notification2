@@ -61,7 +61,7 @@ var app = {
             // data.sound,
             // data.image,
             // data.additionalData
-            retrieveNotificationList();
+            window.location.href = "index.html";
             
         });
 
