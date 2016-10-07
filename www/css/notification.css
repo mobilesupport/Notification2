@@ -124,9 +124,8 @@
 }
 
 .backbutton{
-    display: block;
-    margin: 0 auto;
+    position: relative;
     width: 32px;
     height: 32px;
-
+    float: left;
 }

@@ -41,11 +41,22 @@
 
             
           $(function(){
-              
+              var check=false;
               //When click on logout btn
               $("#logout").click(function() {
                   
-                  navigator.notification.confirm("Are you sure you want to sign out ?", onSignOutConfirm, "Confirmation", "Yes,No", false);     
+                  navigator.notification.confirm("Are you sure you want to sign out ?", onSignOutConfirm, "Confirmation", "Yes,No", false);    
+                    
+                });
+              
+              $("#menu").click(function() {
+                    if(check == false){
+                        $("#menulist").show();
+                        check = true;
+                    }else{
+                         $("#menulist").hide();
+                        check = false;
+                    }
                     
                   });
             
@@ -70,18 +81,24 @@
         
         <div class="menuheader">
         
-        <div class="headerside">
-
+        <div class="title">
+          <button class="headerlogo" style="margin-left:8px;">
+                <img src="img/appicon.png" id="applogo">
+              </button>
+            <label class="titlename">Apecia Notification</label>
         </div>
-        <div class="title"></div>
 		
         <div class="headerside">
-            <button type="button" id="logout" class="headerbtn" style="margin-left: 4px;"> Logout </button>
+<!--            <button type="button" id="logout" class="headerbtn" style="margin-left: 4px;"> Logout </button>-->
 
             
-<!--            <button class="headerbtn" style="float:right;"><img src="img/menu.png" id="menubtn"></button>-->
+            <button class="headerbtn" style="float:right;"><img src="img/menu.png" id="menu"></button>
             
         </div>
+            
+            <div id="menulist">
+                <button type="button" id="logout" class="menubtn"> Logout </button>
+            </div>    
          
     </div>
         
